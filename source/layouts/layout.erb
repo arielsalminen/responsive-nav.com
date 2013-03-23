@@ -15,19 +15,21 @@
   </head>
   <body class="<%= page_classes %>">
     <div class="border"></div>
-    <div id="nav">
-      <ul>
-        <li class="index"><a href="#">Home</a></li>
-        <li class="about"><a href="#">Features</a></li>
-        <li class="projects"><a href="#">Usage Instructions</a></li>
-        <li class="blog"><a href="#">View on GitHub</a></li>
-      </ul>
+    <div class="wrapper">
+      <div id="nav">
+        <ul>
+          <li class="index"><a href="#">Home</a></li>
+          <li class="about"><a href="#">Features</a></li>
+          <li class="projects"><a href="#">Usage Instructions</a></li>
+          <li class="blog"><a href="#">View on GitHub</a></li>
+        </ul>
+      </div>
+      <a href="#nav" id="nav-toggle">Menu</a>
+      <div class="content">
+        <%= yield %>
+      </div>
+      <div class="footer">Brought to you by <a href="#">@viljamis</a>. Follow&nbsp;me&nbsp;on&nbsp;<a href="#">Twitter</a>.</div>
     </div>
-    <a href="#nav" id="nav-toggle">Menu</a>
-    <div class="content">
-      <%= yield %>
-    </div>
-    <div class="footer">Brought to you by <a href="#">@viljamis</a>. Follow&nbsp;me&nbsp;on&nbsp;<a href="#">Twitter</a>.</div>
     <script>
       // Init responsive-nav.js
       var navigation = new ResponsiveNav("#nav", {

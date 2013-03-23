@@ -75,7 +75,7 @@ __________\///__________\////////////________
 /* ------------------------------------------
   COLOURS
 --------------------------------------------- */
-$color-red: #f23900;
+$color-red: #f43f00;
 $color-black: #151414;
 $color-grey: #c5bfbd;
 $color-white: #fff;
@@ -115,7 +115,6 @@ img, video {
   BASE
 --------------------------------------------- */
 body {
-  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -133,7 +132,6 @@ body {
   margin: 0;
   padding: 0 5%;
   width: 90%;
-  max-width: em(600);
   @include breakpoint(hand) {
     padding: 0 12%;
     width: 76%;
@@ -143,11 +141,20 @@ body {
     width: 70%;
   }
   @include breakpoint(desk) {
+    max-width: em(600);
     padding: 0;
     margin: 0 auto;
     float: none;
     width: 100%;
   }
+  @include breakpoint(wall) {
+    max-width: none;
+  }
+}
+
+.wrapper {
+  max-width: em(1000);
+  margin: 0 auto;
 }
 
 .border {
@@ -201,6 +208,9 @@ h1 {
   @include breakpoint(desk) {
     margin-bottom: .2em;
     font-size: 600%;
+  }
+  @include breakpoint(wall) {
+    font-size: 900%;
   }
 }
 
@@ -262,9 +272,8 @@ p {
       text-decoration: underline;
     }
   }
-  @include breakpoint(highres) {
-    background-image: url("../images/hamburger-retina.gif");
-    @include background-size(25px 20px !important);
+  @include breakpoint(wall) {
+    padding-top: 3em;
   }
 }
 
@@ -298,7 +307,7 @@ p {
   height: 55px;
   float: right;
   @include image-replacement;
-  background: transparent url("../images/hamburger.gif") no-repeat 50% 80%;
+  background: $color-red url("../images/hamburger.gif") no-repeat 50% 33%;
   @include breakpoint(highres) {
     background-image: url("../images/hamburger-retina.gif");
     @include background-size(25px 20px !important);
@@ -338,6 +347,7 @@ p {
       float: right;
     }
   }
+
 }
 
 .images {
@@ -357,6 +367,17 @@ p {
     float: right;
     position: relative; 
   }
+  
+  @include breakpoint(wall) {
+    margin: 0 auto;
+    float: none;
+    @include clearfix;
+    width: 60%;
+    .iphone {
+      bottom: -5%;
+      width: auto;
+    }
+  }
 
 }
 
@@ -374,5 +395,8 @@ p {
   }
   @include breakpoint(desk) {
     margin-top: 6em;
+  }
+  @include breakpoint(wall) {
+    margin: 8em 5% 4em;
   }
 }
