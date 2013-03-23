@@ -25,10 +25,13 @@ __________\///__________\////////////________
 // Media Query breakpoints
 @mixin breakpoint($media) {
   @if $media == lap {
-    @media only screen and (min-width: em(600)) { @content; }
+    @media screen and (min-width: em(600)) { @content; }
   }
   @else if $media == desk {
-    @media only screen and (min-width: em(800)) { @content; }
+    @media screen and (min-width: em(800)) { @content; }
+  }
+  @else if $media == highres {
+    @media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (min--moz-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 2/1), screen and (min-device-pixel-ratio: 1.3), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) { @content; }
   }
 }
 
@@ -233,12 +236,15 @@ p {
 }
 
 #nav-toggle {
-  color: $color-white;
-  text-decoration: none;
-  background: $color-red;
-  border-bottom: 1px solid #fff;
-  padding: .8em 1em .6em;
+  width: 70px;
+  height: 55px;
   float: right;
+  @include image-replacement;
+  background: transparent url("../images/hamburger.gif") no-repeat 50% 80%;
+  @include breakpoint(highres) {
+    background-image: url("../images/hamburger-retina.gif");
+    @include background-size(25px 20px !important);
+  }
 }
 
 @media only screen and (min-width: 45em) {
