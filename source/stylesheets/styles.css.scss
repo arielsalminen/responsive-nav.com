@@ -31,7 +31,7 @@ __________\///__________\////////////________
     @media screen and (min-width: em(600)) { @content; }
   }
   @else if $media == desk {
-    @media screen and (min-width: em(750)) { @content; }
+    @media screen and (min-width: em(720)) { @content; }
   }
   @else if $media == wall {
     @media screen and (min-width: em(1000)) { @content; }
@@ -191,7 +191,6 @@ h1 {
   font: normal 300%/0.82 "franklin-custom", sans-serif;
   text-transform: uppercase;
   margin-bottom: .4em;
-  letter-spacing: -0.012em;
   color: $color-red;
   -moz-font-feature-settings: "liga=1, kern=1";
   -ms-font-feature-settings: "liga" 1, "kern" 1;
@@ -241,6 +240,7 @@ p {
     float: none;
     display: inline-block;
     width: auto;
+    margin-right: .7em;
   }
 }
 
@@ -322,10 +322,20 @@ p {
   margin: 2em auto 3em;
   @include breakpoint(desk) {
     margin: 5em auto 3.5em;
+    .intro-container {
+      max-width: em(476);
+      margin: 0 auto;
+    }
     p {
       margin-left: auto;
       margin-right: auto;
-      max-width: em(370);
+      max-width: em(340);
+      text-align: left;
+      float: left;
+    }
+    .btn {
+      margin: 1em .4em 0 0;
+      float: right;
     }
   }
 }
