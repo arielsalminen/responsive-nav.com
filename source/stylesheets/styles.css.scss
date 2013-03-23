@@ -1,0 +1,106 @@
+/*
+
+____\/\\\_________/\\\____/\\\\\\\\\\\\______
+____\/\\\_______ /\\\____/\\\/////////\\_____
+____\//\\\______/\\\____\//\\\______\///_____
+_____\//\\\____/\\\______\////\\\____________
+______\//\\\__/\\\__________\////\\\_________
+_______\//\\\/\\\______________\////\\\______
+________\//\\\\\________/\\\______\//\\\_____
+_________\//\\\________\///\\\\\\\\\\\/______
+__________\///__________\////////////________
+
+*/
+
+// Compass
+@charset "utf-8";
+@import "compass/css3";
+@import "reset.css.scss";
+
+// Converts pixels to EMs
+@function em($pixels, $context: 16) {
+  @return #{$pixels/$context}em;
+}
+
+// Media Query breakpoints
+@mixin breakpoint($media) {
+  @if $media == lap {
+    @media only screen and (min-width: em(600)) { @content; }
+  }
+  @else if $media == desk {
+    @media only screen and (min-width: em(800)) { @content; }
+  }
+}
+
+@mixin clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: "";
+    display: table
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin image-replacement {
+  text-indent: -9999px;
+  overflow: hidden;
+  display: block;
+}
+
+@mixin prevent-user-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin prevent-bleed {
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+
+/* ------------------------------------------
+  RWD
+--------------------------------------------- */
+@-webkit-viewport {width:device-width}
+@-moz-viewport {width:device-width}
+@-ms-viewport {width:device-width}
+@-o-viewport {width:device-width}
+@viewport {width:device-width}
+
+img, video {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.preload * {
+  @include transition(none !important);
+}
+
+/* ------------------------------------------
+  BASE
+--------------------------------------------- */
+* {
+  @include box-sizing("border-box");
+}
+
+body {
+  font: normal 100%/1.5 sans-serif;
+  @include breakpoint(lap) {
+    font-size: 150%;
+  }
+  @include breakpoint(desk) {
+    font-size: 200%;
+  }
+}
+
+
+/* ------------------------------------------
+  NAVIGATION
+--------------------------------------------- */
+@import "responsive-nav.css.scss";
