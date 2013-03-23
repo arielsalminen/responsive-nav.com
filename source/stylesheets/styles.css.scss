@@ -64,6 +64,26 @@ __________\///__________\////////////________
 }
 
 /* ------------------------------------------
+  COLOURS
+--------------------------------------------- */
+$color-red: #f23900;
+$color-black: #151414;
+$color-grey: #c5bfbd;
+$color-white: #fff;
+
+/* ------------------------------------------
+  FONTS
+--------------------------------------------- */
+@font-face {
+  font-family: "franklin-custom";
+  src: url("../fonts/franklin.eot");
+  src: url("../fonts/franklin.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/franklin.woff") format("woff"),
+    url("../fonts/franklin.ttf") format("truetype"),
+    url("../fonts/franklin.svg#wf") format("svg");
+}
+
+/* ------------------------------------------
   RWD
 --------------------------------------------- */
 @-webkit-viewport {width:device-width}
@@ -85,22 +105,172 @@ img, video {
 /* ------------------------------------------
   BASE
 --------------------------------------------- */
-* {
-  @include box-sizing("border-box");
-}
-
 body {
-  font: normal 100%/1.5 sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: $color-black;
+  background: $color-white;
+  font: normal 100%/1.5 Georgia, "times new roman", times, serif;
   @include breakpoint(lap) {
-    font-size: 150%;
+
   }
   @include breakpoint(desk) {
-    font-size: 200%;
+
   }
 }
 
+.content {
+  text-align: center;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.border {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 9px;
+  background: $color-red;
+}
+
+/* ------------------------------------------
+  LINKS
+--------------------------------------------- */
+a {
+  color: $color-red;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* ------------------------------------------
+  BUTTONS
+--------------------------------------------- */
+.btn {
+  color: $color-white;
+  background: $color-red;
+  text-decoration: none;
+  padding: .6em 1em;
+  display: inline-block;
+}
+
+/* ------------------------------------------
+  HEADERS
+--------------------------------------------- */
+h1 {
+  font: normal 300%/0.82 "franklin-custom", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: .4em;
+  color: $color-red;
+  -moz-font-feature-settings: "liga=1, kern=1";
+  -ms-font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* ------------------------------------------
+  PARAGRAPHS
+--------------------------------------------- */
+p {
+  margin-bottom: 1.5em;
+}
 
 /* ------------------------------------------
   NAVIGATION
 --------------------------------------------- */
-@import "responsive-nav.css.scss";
+#nav {
+  z-index: 2;
+}
+#nav,
+#nav * {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#nav,
+#nav ul {
+  list-style: none;
+  width: 100%;
+  float: left;
+}
+
+#nav li {
+  float: left;
+  width: 100%;
+}
+
+#nav a {
+  color: $color-white;
+  text-decoration: none;
+  width: 100%;
+  background: $color-red;
+  border-bottom: 1px solid $color-white;
+  padding: .6em 1em;
+  float: left;
+}
+
+.index #nav .index a {
+  background: darken($color-red, 10%);
+}
+
+.js #nav {
+  clip: rect(0 0 0 0);
+  max-height: 0;
+  position: absolute;
+  display: block;
+  overflow: hidden;
+}
+
+#nav.opened {
+  position: relative;
+  max-height: 9999px;
+}
+
+#nav-toggle {
+  color: $color-white;
+  text-decoration: none;
+  background: $color-red;
+  border-bottom: 1px solid #fff;
+  padding: .8em 1em .6em;
+  float: right;
+}
+
+@media only screen and (min-width: 45em) {
+
+  #nav-toggle {
+    display: none;
+  }
+
+  .js #nav {
+    position: static;
+    max-height: none;
+  }
+
+  #nav li {
+    text-align: center;
+    width: 25%;
+    border-right: 1px solid #fff;
+  }
+
+}
+
+/* ------------------------------------------
+  FRONTPAGE
+--------------------------------------------- */
+
+.intro {
+  margin: 3em auto;
+}
+
+.intro,
+.images,
+.footer {
+  float: left;
+  width: 100%;
+}

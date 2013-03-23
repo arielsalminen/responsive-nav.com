@@ -2,27 +2,39 @@
 <html class="no-js preload no-fontface no-fileinput no-touch" lang="en">
   <head>
     <meta charset="utf-8">
-    <title><%= data.page.title || "Prototype" %></title>
-    <meta name="author" content="Prototype">
+    <title><%= data.page.title || "Responsive Nav" %></title>
+    <meta name="author" content="@viljamis">
     <% if data.page.description %>
       <meta name="description" content="<%= data.page.description %>">
     <% end %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-title" content="Prototype">
-    <%= stylesheet_link_tag "styles" %>
+    <meta name="apple-mobile-web-app-title" content="Responsive Nav">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="">
-    <link rel="alternate" type="application/rss+xml" title="Prototype" href="">
+    <%= stylesheet_link_tag "styles" %>
+    <%= javascript_include_tag  "all" %>
   </head>
   <body class="<%= page_classes %>">
+    <div class="border"></div>
     <div id="nav">
       <ul>
-        <li class="home"><a href="#">Home</a></li>
-        <li class="about"><a href="#">About</a></li>
-        <li class="projects"><a href="#">Projects</a></li>
-        <li class="blog"><a href="#">Blog</a></li>
+        <li class="index"><a href="#">Home</a></li>
+        <li class="about"><a href="#">Features</a></li>
+        <li class="projects"><a href="#">Usage Instructions</a></li>
+        <li class="blog"><a href="#">View on GitHub</a></li>
       </ul>
     </div>
-    <%= yield %>
-    <%= javascript_include_tag  "all" %>
+    <a href="#nav" id="nav-toggle">Menu</a>
+    <div class="content">
+      <%= yield %>
+    </div>
+    <div class="footer">Brought to you by <a href="#">@viljamis</a>. Follow me on <a href="#">Twitter</a>.</div>
+    <script>
+      // Init responsive-nav.js
+      var navigation = new ResponsiveNav("#nav", {
+        transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
+        customToggle: "#nav-toggle", // Selector: Specify the ID of a custom toggle, default is ""
+        debug: false // Boolean: Log debug messages to console, true or false, default is "false"
+      });
+    </script>
   </body>
 </html>

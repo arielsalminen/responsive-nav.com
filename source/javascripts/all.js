@@ -1,3 +1,3 @@
-//= require "responsive-nav"
-//= require "scripts"
 //= require "init"
+//= require "orientation"
+//= require "responsive-nav"
