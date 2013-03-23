@@ -24,11 +24,17 @@ __________\///__________\////////////________
 
 // Media Query breakpoints
 @mixin breakpoint($media) {
+  @if $media == hand {
+    @media screen and (min-width: em(460)) { @content; }
+  }
   @if $media == lap {
     @media screen and (min-width: em(600)) { @content; }
   }
   @else if $media == desk {
-    @media screen and (min-width: em(800)) { @content; }
+    @media screen and (min-width: em(750)) { @content; }
+  }
+  @else if $media == wall {
+    @media screen and (min-width: em(1000)) { @content; }
   }
   @else if $media == highres {
     @media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (min--moz-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 2/1), screen and (min-device-pixel-ratio: 1.3), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) { @content; }
@@ -109,35 +115,51 @@ img, video {
   BASE
 --------------------------------------------- */
 body {
+  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
   color: $color-black;
   background: $color-white;
-  font: normal 100%/1.5 Georgia, "times new roman", times, serif;
-  @include breakpoint(lap) {
-
-  }
-  @include breakpoint(desk) {
-
+  font: normal 100%/1.4 Georgia, "times new roman", times, serif;
+  @include breakpoint(hand) {
+    font-size: 112.5%;
   }
 }
 
 .content {
+  float: left;
   text-align: center;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0 5%;
   width: 90%;
+  max-width: em(600);
+  @include breakpoint(hand) {
+    padding: 0 12%;
+    width: 76%;
+  }
+  @include breakpoint(lap) {
+    padding: 0 15%;
+    width: 70%;
+  }
+  @include breakpoint(desk) {
+    padding: 0;
+    margin: 0 auto;
+    float: none;
+    width: 100%;
+  }
 }
 
 .border {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   right: 0;
-  height: 9px;
+  height: .5em;
   background: $color-red;
 }
+
 
 /* ------------------------------------------
   LINKS
@@ -157,26 +179,32 @@ a {
   color: $color-white;
   background: $color-red;
   text-decoration: none;
-  padding: .6em 1em;
+  padding: .5em 1em;
   display: inline-block;
 }
 
 /* ------------------------------------------
-  HEADERS
+  TYPE
 --------------------------------------------- */
 h1 {
+  -webkit-font-smoothing: antialiased;
   font: normal 300%/0.82 "franklin-custom", sans-serif;
   text-transform: uppercase;
   margin-bottom: .4em;
+  letter-spacing: -0.012em;
   color: $color-red;
   -moz-font-feature-settings: "liga=1, kern=1";
   -ms-font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
+  @include breakpoint(lap) {
+    font-size: 400%;
+  }
+  @include breakpoint(desk) {
+    margin-bottom: .2em;
+    font-size: 600%;
+  }
 }
 
-/* ------------------------------------------
-  PARAGRAPHS
---------------------------------------------- */
 p {
   margin-bottom: 1.5em;
 }
@@ -185,7 +213,7 @@ p {
   NAVIGATION
 --------------------------------------------- */
 #nav {
-  z-index: 2;
+  z-index: 1;
 }
 #nav,
 #nav * {
@@ -201,11 +229,19 @@ p {
   list-style: none;
   width: 100%;
   float: left;
+  @include breakpoint(desk) {
+    text-align: center;
+  }
 }
 
 #nav li {
   float: left;
   width: 100%;
+  @include breakpoint(desk) {
+    float: none;
+    display: inline-block;
+    width: auto;
+  }
 }
 
 #nav a {
@@ -214,13 +250,31 @@ p {
   width: 100%;
   background: $color-red;
   border-bottom: 1px solid $color-white;
-  padding: .6em 1em;
+  padding: .8em 1em;
   float: left;
+  @include breakpoint(desk) {
+    padding: 2.4em 1em .6em;
+    font-size: 87.5%;
+    background: transparent;
+    color: $color-black;
+    border: 0;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  @include breakpoint(highres) {
+    background-image: url("../images/hamburger-retina.gif");
+    @include background-size(25px 20px !important);
+  }
 }
 
 .index #nav .index a {
-  background: darken($color-red, 10%);
-}
+  @include breakpoint(desk) {
+    color: $color-white;
+    background: $color-red;
+    &:hover { text-decoration: none }
+  }
+} 
 
 .js #nav {
   clip: rect(0 0 0 0);
@@ -228,6 +282,10 @@ p {
   position: absolute;
   display: block;
   overflow: hidden;
+  @include breakpoint(desk) {
+    position: static;
+    max-height: none;
+  }
 }
 
 #nav.opened {
@@ -245,38 +303,66 @@ p {
     background-image: url("../images/hamburger-retina.gif");
     @include background-size(25px 20px !important);
   }
-}
-
-@media only screen and (min-width: 45em) {
-
-  #nav-toggle {
+  @include breakpoint(desk) {
     display: none;
   }
-
-  .js #nav {
-    position: static;
-    max-height: none;
-  }
-
-  #nav li {
-    text-align: center;
-    width: 25%;
-    border-right: 1px solid #fff;
-  }
-
 }
 
 /* ------------------------------------------
   FRONTPAGE
 --------------------------------------------- */
-
-.intro {
-  margin: 3em auto;
-}
-
 .intro,
 .images,
 .footer {
   float: left;
   width: 100%;
+}
+
+.intro {
+  margin: 2em auto 3em;
+  @include breakpoint(desk) {
+    margin: 5em auto 3.5em;
+    p {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: em(370);
+    }
+  }
+}
+
+.images {
+  position: relative;
+
+  .iphone {
+    position: absolute;
+    bottom: -8%;
+    left: 0;
+    z-index: 2;
+    width: 30%;
+  }
+  
+  .ipad {
+    width: 88%;
+    z-index: 1;
+    float: right;
+    position: relative; 
+  }
+
+}
+
+/* ------------------------------------------
+  FOOTER
+--------------------------------------------- */
+.footer {
+  color: $color-grey;
+  text-align: center;
+  font-size: 14px;
+  width: 90%;
+  margin: 4.8em 5% 2em;
+  a {
+    color: $color-grey;
+  }
+  @include breakpoint(desk) {
+    margin-top: 6em;
+  }
 }
