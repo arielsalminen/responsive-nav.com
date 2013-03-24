@@ -117,6 +117,7 @@ img, video {
   BASE
 --------------------------------------------- */
 body {
+  min-width: 280px;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -143,10 +144,8 @@ body {
     width: 70%;
   }
   @include breakpoint(desk) {
-    max-width: em(600);
     padding: 0;
     margin: 0 auto;
-    float: none;
     overflow: hidden;
     width: 100%;
   }
@@ -278,7 +277,6 @@ p {
 #nav {
   z-index: 1;
   font-family: $font-headers;
-  float: left;
 }
 
 #nav,
