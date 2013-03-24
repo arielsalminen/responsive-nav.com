@@ -1,9 +1,36 @@
----
-title: Responsive Navigation Plugin
-description: Prototype page description
----
-
-<div class="intro">
+<!DOCTYPE html>
+<html class="no-js preload no-fontface no-fileinput no-touch" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Responsive Navigation Plugin</title>
+    <meta name="author" content="@viljamis">
+    
+      <meta name="description" content="Prototype page description">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-title" content="Responsive Nav">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="">
+    <script src="//use.typekit.net/sxv1brn.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+    
+      <link href="/stylesheets/styles.css" media="screen" rel="stylesheet" type="text/css" />
+    
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+  </head>
+  <body class="index" onload="prettyPrint()">
+    <div class="border" id="home"></div>
+    <div class="wrapper">
+      <div id="nav">
+        <ul>
+          <li class="active"><a href="http://responsive-nav.com">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#instructions">Usage Instructions</a></li>
+          <li><a href="https://github.com/viljamis/responsive-nav.js" rel="external">View on GitHub</a></li>
+        </ul>
+      </div>
+      <a href="#nav" id="nav-toggle">Menu</a>
+      <div class="content">
+        <div class="intro">
   <h1>Responsive Nav</h1>
   <div class="intro-container">
     <p>Responsive navigation plugin without library dependencies and with fast touch screen support. Try it out by <em>resizing</em>&nbsp;this&nbsp;window.</p>
@@ -75,3 +102,16 @@ description: Prototype page description
   <span>or</span>
   <a href="https://github.com/viljamis/responsive-nav.js" rel="external" class="btn">View the repository</a>
 </div>
+      </div>
+      <div class="footer">Brought to you by <a href="http://viljamis.com" rel="external">@viljamis</a>. Follow&nbsp;me on <a href="http://twitter.com/viljamis" rel="external">Twitter</a>&nbsp;for&nbsp;updates.</div>
+    </div>
+    <script>
+      // Init responsive-nav.js
+      var navigation = new ResponsiveNav("#nav", {
+        transition: 400, // Integer: Speed of the transition, in milliseconds, default is "300"
+        customToggle: "#nav-toggle", // Selector: Specify the ID of a custom toggle, default is ""
+        debug: false // Boolean: Log debug messages to console, true or false, default is "false"
+      });
+    </script>
+  </body>
+</html>

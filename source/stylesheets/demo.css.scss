@@ -75,7 +75,7 @@ __________\///__________\////////////________
 /* ------------------------------------------
   COLOURS
 --------------------------------------------- */
-$color-red: #f4421a;
+$color-red: #444;
 $color-black: #37302a;
 $color-grey: #bab9b6;
 $color-brown: #847160;
@@ -159,8 +159,8 @@ body {
   float: left;
   text-align: center;
   margin: 0;
-  padding: 0 5%;
-  width: 90%;
+  padding: 0 8%;
+  width: 84%;
   @include breakpoint(hand) {
     padding: 0 12%;
     width: 76%;
@@ -519,3 +519,12 @@ pre::-webkit-scrollbar-thumb {
 .opn, .clo, .fun { color: $color-black; }
 .str, .atv { color: $color-red }
 .typ, .atn, .dec, .var { color: $color-brown; }
+
+/* ------------------------------------------
+  DEMO
+-----------*/
+
+#nav,
+.content {
+  float: left;
+}

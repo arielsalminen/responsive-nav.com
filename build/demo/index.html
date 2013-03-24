@@ -2,24 +2,20 @@
 <html class="no-js preload no-fontface no-fileinput no-touch" lang="en">
   <head>
     <meta charset="utf-8">
-    <title><%= data.page.title || "Responsive Nav" %></title>
+    <title>Responsive-Nav.js Demo</title>
     <meta name="author" content="@viljamis">
-    <% if data.page.description %>
-      <meta name="description" content="<%= data.page.description %>">
-    <% end %>
+    
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-title" content="Responsive Nav">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="">
     <script src="//use.typekit.net/sxv1brn.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
-    <% if data.page.demo == true %>
-      <%= stylesheet_link_tag "demo" %>
-    <% else %>
-      <%= stylesheet_link_tag "styles" %>
-    <% end %>
-    <%= javascript_include_tag  "all" %>
+    
+      <link href="/stylesheets/demo.css" media="screen" rel="stylesheet" type="text/css" />
+    
+    <script src="/javascripts/all.js" type="text/javascript"></script>
   </head>
-  <body class="<%= page_classes %>" onload="prettyPrint()">
+  <body class="demo demo_index" onload="prettyPrint()">
     <div class="border" id="home"></div>
     <div class="wrapper">
       <div id="nav">
@@ -32,7 +28,21 @@
       </div>
       <a href="#nav" id="nav-toggle">Menu</a>
       <div class="content">
-        <%= yield %>
+        <div id="features" class="section">
+  <h2>Prototype</h2>
+  <p>Responsive Nav is a tiny JavaScript plugin (weighs ~1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from <em>max-height: 0</em> to <em>max-height: auto</em> which isn’t normally possible with CSS3&nbsp;transitions.</p>
+  <ul>
+    <li>~1kb minified and gzipped</li>
+    <li>Doesn’t require any external libraries</li>
+    <li>Simple markup using lists</li>
+    <li>Uses CSS3 transitions and touchstart</li>
+  </ul><ul>
+    <li>Removes the 300ms delay between a physical tap and the click&nbsp;event</li>
+    <li>Makes it possible to use CSS3 transition with max-height:&nbsp;auto</li>
+    <li>Built accessibility in mind, meaning that it works on screen readers&nbsp;too</li>
+    <li>Works in all major desktop and mobile browsers including IE6 and&nbsp;up</li>
+  </ul>
+</div>
       </div>
       <div class="footer">Brought to you by <a href="http://viljamis.com" rel="external">@viljamis</a>. Follow&nbsp;me on <a href="http://twitter.com/viljamis" rel="external">Twitter</a>&nbsp;for&nbsp;updates.</div>
     </div>
