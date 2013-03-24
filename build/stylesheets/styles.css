@@ -1,16 +1,6 @@
-/*
-
-____\/\\_________/\\____/\\\\\\______
-____\/\\_______ /\\____/\\/////////\_____
-____\//\\______/\\____\//\\______\///_____
-_____\//\\____/\\______\////\\____________
-______\//\\__/\\__________\////\\_________
-_______\//\\/\\______________\////\\______
-________\//\\\________/\\______\//\\_____
-_________\//\\________\///\\\\\\/______
-__________\///__________\////////////________
-
-*/
+/* ------------------------------------------
+  IMPORTS
+--------------------------------------------- */
 /* ------------------------------------------
   RESET
 --------------------------------------------- */
@@ -208,43 +198,50 @@ a img, img {
   border: 0; }
 
 /* ------------------------------------------
+  CONVERT PX TO EM
+--------------------------------------------- */
+/* ------------------------------------------
+  MEDIA QUERIES
+--------------------------------------------- */
+/* ------------------------------------------
+  CLEARFIX
+--------------------------------------------- */
+/* ------------------------------------------
   COLOURS
 --------------------------------------------- */
 /* ------------------------------------------
   FONTS
 --------------------------------------------- */
 /* ------------------------------------------
-  FONTS
+  SELECTIONS
 --------------------------------------------- */
-/* line 93, styles.css.scss */
+/* line 69, styles.css.scss */
 ::-moz-selection {
-  background: #f4421a;
-  color: white;
-  text-shadow: none; }
+  background: #37302a;
+  color: white; }
 
-/* line 99, styles.css.scss */
+/* line 74, styles.css.scss */
 ::selection {
-  background: #f4421a;
-  color: white;
-  text-shadow: none; }
+  background: #37302a;
+  color: white; }
 
-/* line 105, styles.css.scss */
+/* line 79, styles.css.scss */
 img::selection {
   background: transparent; }
 
-/* line 109, styles.css.scss */
+/* line 83, styles.css.scss */
 img::-moz-selection {
   background: transparent; }
 
-/* line 113, styles.css.scss */
+/* line 87, styles.css.scss */
 h1::selection {
-  -webkit-text-stroke: 2px white;
-  background: #f4421a;
-  color: #f4421a; }
+  -webkit-text-stroke: 2px #f4421a;
+  background: transparent;
+  color: transparent; }
 
-/* line 120, styles.css.scss */
+/* line 94, styles.css.scss */
 ::selection:window-inactive,
-.cssmask h1::selection:window-inactive {
+h1::selection:window-inactive {
   background: #bab9b6; }
 
 /* ------------------------------------------
@@ -265,13 +262,13 @@ h1::selection {
 @viewport {
   width: device-width; }
 
-/* line 133, styles.css.scss */
+/* line 107, styles.css.scss */
 img, video {
   width: auto;
   max-width: 100%;
   height: auto; }
 
-/* line 139, styles.css.scss */
+/* line 113, styles.css.scss */
 .preload * {
   -webkit-transition: none !important;
   -moz-transition: none !important;
@@ -281,7 +278,7 @@ img, video {
 /* ------------------------------------------
   BASE
 --------------------------------------------- */
-/* line 146, styles.css.scss */
+/* line 120, styles.css.scss */
 body {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -290,46 +287,47 @@ body {
   background: white;
   font: normal 112.5%/1.4 "chaparral-pro", Georgia, "times new roman", times, serif; }
   @media screen and (min-width: 28.75em) {
-    /* line 146, styles.css.scss */
+    /* line 120, styles.css.scss */
     body {
       font-size: 125%; } }
 
-/* line 158, styles.css.scss */
+/* line 132, styles.css.scss */
 .content {
   float: left;
   text-align: center;
   margin: 0;
-  padding: 0 5%;
-  width: 90%; }
+  padding: 0 8%;
+  width: 84%; }
   @media screen and (min-width: 28.75em) {
-    /* line 158, styles.css.scss */
+    /* line 132, styles.css.scss */
     .content {
       padding: 0 12%;
       width: 76%; } }
   @media screen and (min-width: 37.5em) {
-    /* line 158, styles.css.scss */
+    /* line 132, styles.css.scss */
     .content {
       padding: 0 15%;
       width: 70%; } }
   @media screen and (min-width: 46.25em) {
-    /* line 158, styles.css.scss */
+    /* line 132, styles.css.scss */
     .content {
       max-width: 37.5em;
       padding: 0;
       margin: 0 auto;
       float: none;
+      overflow: hidden;
       width: 100%; } }
   @media screen and (min-width: 62.5em) {
-    /* line 158, styles.css.scss */
+    /* line 132, styles.css.scss */
     .content {
       max-width: none; } }
 
-/* line 184, styles.css.scss */
+/* line 159, styles.css.scss */
 .wrapper {
   max-width: 47.5em;
   margin: 0 auto; }
 
-/* line 189, styles.css.scss */
+/* line 164, styles.css.scss */
 .border {
   position: absolute;
   z-index: 2;
@@ -342,18 +340,18 @@ body {
 /* ------------------------------------------
   LINKS
 --------------------------------------------- */
-/* line 203, styles.css.scss */
+/* line 178, styles.css.scss */
 a {
   color: #f4421a;
   text-decoration: underline; }
-  /* line 206, styles.css.scss */
+  /* line 181, styles.css.scss */
   a:hover {
     text-decoration: none; }
 
 /* ------------------------------------------
   BUTTONS
 --------------------------------------------- */
-/* line 214, styles.css.scss */
+/* line 189, styles.css.scss */
 .btn {
   color: white;
   background: #f4421a;
@@ -365,129 +363,134 @@ a {
   font-weight: 400;
   font-family: "proxima-nova-extra-condensed", sans-serif;
   font-size: 112.5%;
-  letter-spacing: 2px; }
+  letter-spacing: 2px;
+  -webkit-transition: background 0.5s ease;
+  -moz-transition: background 0.5s ease;
+  -o-transition: background 0.5s ease;
+  transition: background 0.5s ease; }
+  /* line 202, styles.css.scss */
+  .btn:hover {
+    background: #d12f0a; }
+  /* line 205, styles.css.scss */
+  .btn:active {
+    opacity: .7; }
   @media screen and (min-width: 46.25em) {
-    /* line 214, styles.css.scss */
+    /* line 189, styles.css.scss */
     .btn {
       font-size: 1.1em; } }
 
 /* ------------------------------------------
-  TYPE
+  TYPOGRAPHY
 --------------------------------------------- */
-/* line 234, styles.css.scss */
+/* line 216, styles.css.scss */
 h1, h2, h3 {
   font-family: "proxima-nova-extra-condensed", sans-serif;
   text-transform: uppercase;
   -moz-font-feature-settings: "liga=1, kern=1";
   -ms-font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased; }
-
-/* line 243, styles.css.scss */
-h1 {
+  -webkit-font-smoothing: antialiased;
   font-weight: 700;
+  color: #f4421a; }
+
+/* line 227, styles.css.scss */
+h1 {
   font-size: 275%;
   line-height: 0.82;
   letter-spacing: -0.03em;
-  margin-bottom: .4em;
-  color: #f4421a; }
+  margin-bottom: .4em; }
   @media screen and (min-width: 37.5em) {
-    /* line 243, styles.css.scss */
+    /* line 227, styles.css.scss */
     h1 {
       font-size: 400%; } }
   @media screen and (min-width: 46.25em) {
-    /* line 243, styles.css.scss */
+    /* line 227, styles.css.scss */
     h1 {
       margin-bottom: .2em;
       font-size: 620%; } }
   @media screen and (min-width: 62.5em) {
-    /* line 243, styles.css.scss */
+    /* line 227, styles.css.scss */
     h1 {
       font-size: 880%; } }
 
-/* line 262, styles.css.scss */
+/* line 244, styles.css.scss */
 h2 {
   letter-spacing: -0.02em;
-  font-weight: 700;
   font-size: 175%;
   line-height: 0.82;
-  margin-bottom: .6em;
-  color: #f4421a; }
+  margin-bottom: .7em; }
   @media screen and (min-width: 46.25em) {
-    /* line 262, styles.css.scss */
+    /* line 244, styles.css.scss */
     h2 {
       font-size: 2.375em; } }
 
-/* line 274, styles.css.scss */
+/* line 254, styles.css.scss */
 h3 {
   -webkit-font-smoothing: subpixel-antialiased;
   font-weight: 400;
   font-size: 125%;
   line-height: 1;
-  margin-bottom: 1em;
+  float: left;
+  width: 100%;
+  margin: 0.2em 0 1em;
   letter-spacing: 1px;
   color: #37302a; }
   @media screen and (min-width: 46.25em) {
-    /* line 274, styles.css.scss */
+    /* line 254, styles.css.scss */
     h3 {
       font-size: 1.2em; } }
 
-/* line 287, styles.css.scss */
+/* line 269, styles.css.scss */
 p {
   margin-bottom: 1.5em; }
-
-/* line 291, styles.css.scss */
-.section p {
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto; }
-
-/* line 295, styles.css.scss */
-em {
-  font-style: italic; }
+  /* line 271, styles.css.scss */
+  .section p {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto; }
 
 /* ------------------------------------------
   NAVIGATION
 --------------------------------------------- */
-/* line 302, styles.css.scss */
+/* line 279, styles.css.scss */
 #nav {
   z-index: 1;
-  font-family: "proxima-nova-extra-condensed", sans-serif; }
+  font-family: "proxima-nova-extra-condensed", sans-serif;
+  float: left; }
 
-/* line 308, styles.css.scss */
+/* line 286, styles.css.scss */
 #nav,
 #nav * {
-  margin: 0;
-  padding: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 317, styles.css.scss */
+/* line 293, styles.css.scss */
 #nav,
 #nav ul {
+  margin: 0;
   list-style: none;
   width: 100%;
   float: left; }
   @media screen and (min-width: 46.25em) {
-    /* line 317, styles.css.scss */
+    /* line 293, styles.css.scss */
     #nav,
     #nav ul {
       text-align: center; } }
 
-/* line 326, styles.css.scss */
+/* line 303, styles.css.scss */
 #nav li {
   float: left;
   width: 100%; }
   @media screen and (min-width: 46.25em) {
-    /* line 326, styles.css.scss */
+    /* line 303, styles.css.scss */
     #nav li {
       float: none;
       display: inline-block;
       width: auto;
       margin-right: .7em; } }
 
-/* line 337, styles.css.scss */
+/* line 314, styles.css.scss */
 #nav a {
   text-transform: uppercase;
   font-weight: 400;
@@ -498,33 +501,33 @@ em {
   width: 100%;
   background: #f4421a;
   border-bottom: 1px solid white;
-  padding: 0.7em 1em;
+  padding: 0.5em 1em;
   float: left; }
   @media screen and (min-width: 46.25em) {
-    /* line 337, styles.css.scss */
+    /* line 314, styles.css.scss */
     #nav a {
       -webkit-font-smoothing: antialiased;
       margin: 0;
-      padding: 2em 0.7em 0.6em;
+      padding: 1.96em 0.7em 0.5em;
       font-size: 1.1em;
       background: transparent;
       color: #37302a;
       border: 0; }
-      /* line 357, styles.css.scss */
+      /* line 334, styles.css.scss */
       #nav a:hover {
         text-decoration: underline; } }
 
 @media screen and (min-width: 46.25em) {
-  /* line 363, styles.css.scss */
+  /* line 340, styles.css.scss */
   #nav .active a {
     -webkit-font-smoothing: subpixel-antialiased;
     color: white;
     background: #f4421a; }
-    /* line 368, styles.css.scss */
+    /* line 345, styles.css.scss */
     #nav .active a:hover {
       text-decoration: none; } }
 
-/* line 372, styles.css.scss */
+/* line 351, styles.css.scss */
 .js #nav {
   clip: rect(0 0 0 0);
   max-height: 0;
@@ -532,32 +535,35 @@ em {
   display: block;
   overflow: hidden; }
   @media screen and (min-width: 46.25em) {
-    /* line 372, styles.css.scss */
+    /* line 351, styles.css.scss */
     .js #nav {
       position: static;
       max-height: none; } }
 
-/* line 384, styles.css.scss */
+/* line 363, styles.css.scss */
 #nav.opened {
   position: relative;
   max-height: 9999px; }
 
-/* line 389, styles.css.scss */
+/* ------------------------------------------
+  NAVIGATION TOGGLE
+--------------------------------------------- */
+/* line 371, styles.css.scss */
 #nav-toggle {
-  width: 70px;
-  height: 55px;
-  float: right;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: 70px;
+  height: 55px;
+  float: right;
   text-indent: -9999px;
   overflow: hidden;
   display: block;
   background: #f4421a url("../images/hamburger.gif") no-repeat 50% 33%; }
   @media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (min--moz-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 2 / 1), screen and (min-device-pixel-ratio: 1.3), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
-    /* line 389, styles.css.scss */
+    /* line 371, styles.css.scss */
     #nav-toggle {
       background-image: url("../images/hamburger-retina.gif");
       -webkit-background-size: 100px 100px !important;
@@ -565,117 +571,134 @@ em {
       -o-background-size: 100px 100px !important;
       background-size: 100px 100px !important; } }
   @media screen and (min-width: 46.25em) {
-    /* line 389, styles.css.scss */
+    /* line 371, styles.css.scss */
     #nav-toggle {
       display: none; } }
 
 /* ------------------------------------------
-  FRONTPAGE
+  FRONTPAGE INTRO
 --------------------------------------------- */
-/* line 408, styles.css.scss */
+/* line 396, styles.css.scss */
 .intro, .footer {
   float: left;
   width: 100%; }
 
 @media screen and (min-width: 62.5em) {
-  /* line 413, styles.css.scss */
+  /* line 401, styles.css.scss */
   .image {
     margin-left: -1em; } }
 
-/* line 419, styles.css.scss */
+/* line 407, styles.css.scss */
 .intro {
   margin: 2em auto 3em; }
   @media screen and (min-width: 46.25em) {
-    /* line 419, styles.css.scss */
+    /* line 407, styles.css.scss */
     .intro {
-      margin: 5em auto 3.5em; }
-      /* line 423, styles.css.scss */
+      margin: 4.96em auto 4.1em; }
+      /* line 411, styles.css.scss */
       .intro .intro-container {
         max-width: 31.5em;
-        margin: 0 auto; }
-      /* line 427, styles.css.scss */
+        margin: 2.4em auto; }
+      /* line 415, styles.css.scss */
       .intro p {
         margin-left: auto;
         margin-right: auto;
         max-width: 21.25em;
         text-align: left;
         float: left; }
-      /* line 434, styles.css.scss */
+      /* line 422, styles.css.scss */
       .intro .btn {
         margin: 0.7em 1.3em 0 0;
         float: right; } }
   @media screen and (min-width: 62.5em) {
-    /* line 419, styles.css.scss */
+    /* line 407, styles.css.scss */
     .intro {
-      margin-top: 6em; } }
-
-/* ------------------------------------------
-  FOOTER
---------------------------------------------- */
-/* line 448, styles.css.scss */
-.footer {
-  color: #bab9b6;
-  text-align: center;
-  font-size: 16px;
-  width: 90%;
-  margin: 2.8em 5% 2em; }
-  /* line 454, styles.css.scss */
-  .footer a {
-    color: #bab9b6; }
-  @media screen and (min-width: 46.25em) {
-    /* line 448, styles.css.scss */
-    .footer {
-      margin-top: 6em;
-      margin-bottom: 4em; } }
+      margin-top: 5.86em; } }
 
 /* ------------------------------------------
   SECTIONS
 --------------------------------------------- */
-/* line 466, styles.css.scss */
+/* line 436, styles.css.scss */
 .section {
   max-width: 31.5em;
   margin: 0 auto;
   text-align: left;
-  margin-top: 3em; }
-  @media screen and (min-width: 46.25em) {
-    /* line 466, styles.css.scss */
-    .section {
-      margin-top: 5em; } }
-  /* line 475, styles.css.scss */
+  margin-top: 3em;
+  *zoom: 1; }
+  /* line 42, styles.css.scss */
+  .section:before, .section:after {
+    content: "";
+    display: table; }
+  /* line 46, styles.css.scss */
+  .section:after {
+    clear: both; }
+  /* line 442, styles.css.scss */
   .section ul {
     list-style-type: circle;
     font-weight: 600; }
-    @media screen and (min-width: 46.25em) {
-      /* line 475, styles.css.scss */
+    @media screen and (min-width: 37.5em) {
+      /* line 442, styles.css.scss */
       .section ul {
         margin-left: 0; } }
+    @media screen and (min-width: 62.5em) {
+      /* line 442, styles.css.scss */
+      .section ul {
+        margin: 1.34em 0 2em;
+        line-height: 1.4;
+        width: 55%;
+        margin-left: -7%;
+        float: left; }
+        /* line 454, styles.css.scss */
+        .section ul li {
+          margin-bottom: 1.4em; }
+        /* line 457, styles.css.scss */
+        .section ul.list-2 {
+          float: right;
+          margin-left: 0;
+          margin-right: -13%; } }
 
-/* line 485, styles.css.scss */
+@media screen and (min-width: 62.5em) {
+  /* line 466, styles.css.scss */
+  #features {
+    padding-bottom: 1.74em;
+    margin-bottom: 5.26em;
+    border-bottom: 1px solid #d3d2d0; } }
+
+/* ------------------------------------------
+  CODE BLOCKS
+--------------------------------------------- */
+/* line 477, styles.css.scss */
 pre, code {
-  font-family: monospace, monospace; }
+  font-family: "panic sans", Monaco, monospace, monospace; }
 
-/* line 489, styles.css.scss */
+/* line 481, styles.css.scss */
 pre {
   padding: 2em 2em 1.3em;
   margin-bottom: 3em;
   font-size: 75%;
-  color: #37302a;
+  color: #433a33;
   background: #fafafa;
   white-space: pre;
   white-space: no-wrap;
   overflow-x: scroll;
-  -webkit-box-shadow: 0 1px 4px whitesmoke, inset 0 0 0 1px #e7e6e5;
-  -moz-box-shadow: 0 1px 4px whitesmoke, inset 0 0 0 1px #e7e6e5;
-  box-shadow: 0 1px 4px whitesmoke, inset 0 0 0 1px #e7e6e5; }
+  -webkit-box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #e7e6e5;
+  -moz-box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #e7e6e5;
+  box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #e7e6e5; }
+  /* line 494, styles.css.scss */
+  pre:hover {
+    background: #fdfdfd;
+    -webkit-box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #cecdcb;
+    -moz-box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #cecdcb;
+    box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #cecdcb; }
 
-/* line 501, styles.css.scss */
+/* line 503, styles.css.scss */
 pre::-webkit-scrollbar {
   -webkit-appearance: none;
   background-color: transparent;
   width: 8px;
   height: 8px; }
 
-/* line 508, styles.css.scss */
+/* line 510, styles.css.scss */
 pre::-webkit-scrollbar-thumb {
   border-radius: 0;
   background-color: #d3d2d0; }
@@ -683,26 +706,77 @@ pre::-webkit-scrollbar-thumb {
 /* ------------------------------------------
   HIGHLIGHTING
 --------------------------------------------- */
-/* line 516, styles.css.scss */
+/* line 518, styles.css.scss */
 .com {
   color: #bab9b6; }
 
-/* line 517, styles.css.scss */
-.lit {
-  color: #f4421a; }
-
-/* line 518, styles.css.scss */
-.pun {
-  color: #f4421a; }
-
 /* line 519, styles.css.scss */
+.lit {
+  color: #bc593d; }
+
+/* line 520, styles.css.scss */
+.pun {
+  color: #b3a497; }
+
+/* line 521, styles.css.scss */
 .opn, .clo, .fun {
   color: #37302a; }
 
-/* line 520, styles.css.scss */
+/* line 522, styles.css.scss */
 .str, .atv {
-  color: #f4421a; }
+  color: #bc593d; }
 
-/* line 521, styles.css.scss */
+/* line 523, styles.css.scss */
 .typ, .atn, .dec, .var {
   color: #847160; }
+
+/* ------------------------------------------
+  DOWNLOAD SECTION
+--------------------------------------------- */
+/* line 528, styles.css.scss */
+#download {
+  margin-top: 1em;
+  text-align: center; }
+  @media screen and (min-width: 46.25em) {
+    /* line 528, styles.css.scss */
+    #download {
+      margin-top: 3em; } }
+  /* line 534, styles.css.scss */
+  #download span {
+    width: 100%;
+    display: block;
+    margin: 0.2em 0; }
+  @media screen and (min-width: 46.25em) {
+    /* line 540, styles.css.scss */
+    #download span {
+      width: auto;
+      display: inline;
+      margin: 0 0.6em; } }
+  /* line 546, styles.css.scss */
+  #download .repo {
+    background: #847160; }
+    /* line 548, styles.css.scss */
+    #download .repo:hover {
+      background: #66584b; }
+
+/* ------------------------------------------
+  FOOTER
+--------------------------------------------- */
+/* line 557, styles.css.scss */
+.footer {
+  color: #bab9b6;
+  text-align: center;
+  font-size: 16px;
+  width: 90%;
+  margin: 2.8em 5% 2em; }
+  /* line 563, styles.css.scss */
+  .footer a {
+    color: #bab9b6; }
+    /* line 565, styles.css.scss */
+    .footer a:hover {
+      color: #37302a; }
+  @media screen and (min-width: 46.25em) {
+    /* line 557, styles.css.scss */
+    .footer {
+      margin-top: 6em;
+      margin-bottom: 4em; } }

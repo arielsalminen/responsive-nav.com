@@ -1,28 +1,20 @@
-/*
-
-____\/\\\_________/\\\____/\\\\\\\\\\\\______
-____\/\\\_______ /\\\____/\\\/////////\\_____
-____\//\\\______/\\\____\//\\\______\///_____
-_____\//\\\____/\\\______\////\\\____________
-______\//\\\__/\\\__________\////\\\_________
-_______\//\\\/\\\______________\////\\\______
-________\//\\\\\________/\\\______\//\\\_____
-_________\//\\\________\///\\\\\\\\\\\/______
-__________\///__________\////////////________
-
-*/
-
-// Compass
+/* ------------------------------------------
+  IMPORTS
+--------------------------------------------- */
 @charset "utf-8";
 @import "compass/css3";
 @import "reset.css.scss";
 
-// Converts pixels to EMs
+/* ------------------------------------------
+  CONVERT PX TO EM
+--------------------------------------------- */
 @function em($pixels, $context: 16) {
   @return #{$pixels/$context}em;
 }
 
-// Media Query breakpoints
+/* ------------------------------------------
+  MEDIA QUERIES
+--------------------------------------------- */
 @mixin breakpoint($media) {
   @if $media == hand {
     @media screen and (min-width: em(460)) { @content; }
@@ -41,6 +33,9 @@ __________\///__________\////////////________
   }
 }
 
+/* ------------------------------------------
+  CLEARFIX
+--------------------------------------------- */
 @mixin clearfix {
   *zoom: 1;
   &:before, &:after {
@@ -50,26 +45,6 @@ __________\///__________\////////////________
   &:after {
     clear: both;
   }
-}
-
-@mixin image-replacement {
-  text-indent: -9999px;
-  overflow: hidden;
-  display: block;
-}
-
-@mixin prevent-user-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-@mixin prevent-bleed {
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding;
-  background-clip: padding-box;
 }
 
 /* ------------------------------------------
@@ -88,38 +63,36 @@ $font-body: "chaparral-pro", Georgia, "times new roman", times, serif;
 $font-headers: "proxima-nova-extra-condensed", sans-serif;
 
 /* ------------------------------------------
-  FONTS
+  SELECTIONS
 --------------------------------------------- */
 ::-moz-selection {
-  background: $color-red;
+  background: $color-black;
   color: $color-white;
-  text-shadow: none;
-  }
+}
 
 ::selection {
-  background: $color-red;
+  background: $color-black;
   color: $color-white;
-  text-shadow: none;
-  }
+}
 
 img::selection {
   background: transparent;
-  }
+}
 
 img::-moz-selection {
   background: transparent;
-  }
+}
 
 h1::selection {
-  -webkit-text-stroke: 2px $color-white;
-  background: $color-red;
-  color: $color-red;
-  }
+  -webkit-text-stroke: 2px $color-red;
+  background: transparent;
+  color: transparent;
+}
 
 ::selection:window-inactive,
-.cssmask h1::selection:window-inactive {
+h1::selection:window-inactive {
   background: $color-grey;
-  }
+}
 
 /* ------------------------------------------
   RWD
@@ -148,7 +121,7 @@ body {
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
   color: $color-black;
-  background: $color-white;
+  background: $color-white /*url("../images/baseline.gif") repeat*/;
   font: normal 112.5%/1.4 $font-body;
   @include breakpoint(hand) {
     font-size: 125%;
@@ -159,8 +132,8 @@ body {
   float: left;
   text-align: center;
   margin: 0;
-  padding: 0 5%;
-  width: 90%;
+  padding: 0 8%;
+  width: 84%;
   @include breakpoint(hand) {
     padding: 0 12%;
     width: 76%;
@@ -174,6 +147,7 @@ body {
     padding: 0;
     margin: 0 auto;
     float: none;
+    overflow: hidden;
     width: 100%;
   }
   @include breakpoint(wall) {
@@ -223,13 +197,20 @@ a {
   font-family: $font-headers;
   font-size: 112.5%;
   letter-spacing: 2px;
+  @include transition(background .5s ease);
+  &:hover {
+    background: darken($color-red, 10%);
+  }
+  &:active {
+    opacity: .7;
+  }
   @include breakpoint(desk) {
     font-size: em(22, 20);
   }
 }
 
 /* ------------------------------------------
-  TYPE
+  TYPOGRAPHY
 --------------------------------------------- */
 h1, h2, h3 {
   font-family: $font-headers;
@@ -238,15 +219,15 @@ h1, h2, h3 {
   -ms-font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  font-weight: 700;
+  color: $color-red;
 }
 
 h1 {
-  font-weight: 700; 
   font-size: 275%;
   line-height: 0.82;
   letter-spacing: -0.03em;
   margin-bottom: .4em;
-  color: $color-red;
   @include breakpoint(lap) {
     font-size: 400%;
   }
@@ -261,11 +242,9 @@ h1 {
 
 h2 {
   letter-spacing: -0.02em;
-  font-weight: 700;
   font-size: 175%;
   line-height: 0.82;
-  margin-bottom: .6em;
-  color: $color-red;
+  margin-bottom: .7em;
   @include breakpoint(desk) {
     font-size: em(38);
   }
@@ -276,7 +255,9 @@ h3 {
   font-weight: 400;
   font-size: 125%;
   line-height: 1;
-  margin-bottom: 1em;
+  float: left;
+  width: 100%;
+  margin: .2em 0 1em;
   letter-spacing: 1px;
   color: $color-black;
   @include breakpoint(desk) {
@@ -286,14 +267,9 @@ h3 {
 
 p {
   margin-bottom: 1.5em;
-}
-
-.section p {
-  @include hyphens(auto);
-}
-
-em {
-  font-style: italic;
+  .section & {
+    @include hyphens(auto);
+  }
 }
 
 /* ------------------------------------------
@@ -302,12 +278,11 @@ em {
 #nav {
   z-index: 1;
   font-family: $font-headers;
+  float: left;
 }
 
 #nav,
 #nav * {
-  margin: 0;
-  padding: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -315,6 +290,7 @@ em {
 
 #nav,
 #nav ul {
+  margin: 0;
   list-style: none;
   width: 100%;
   float: left;
@@ -344,12 +320,12 @@ em {
   width: 100%;
   background: $color-red;
   border-bottom: 1px solid $color-white;
-  padding: .7em 1em;
+  padding: .5em 1em;
   float: left;
   @include breakpoint(desk) {
     -webkit-font-smoothing: antialiased;
     margin: 0;
-    padding: 2em .7em .6em;
+    padding: 1.96em .7em .5em;
     font-size: em(22, 20);
     background: transparent;
     color: $color-black;
@@ -365,7 +341,9 @@ em {
     -webkit-font-smoothing: subpixel-antialiased;
     color: $color-white;
     background: $color-red;
-    &:hover { text-decoration: none }
+    &:hover {
+      text-decoration: none;
+    }
   }
 } 
 
@@ -386,12 +364,21 @@ em {
   max-height: 9999px;
 }
 
+/* ------------------------------------------
+  NAVIGATION TOGGLE
+--------------------------------------------- */
 #nav-toggle {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   width: 70px;
   height: 55px;
   float: right;
-  @include prevent-user-select;
-  @include image-replacement;
+  text-indent: -9999px;
+  overflow: hidden;
+  display: block;
   background: $color-red url("../images/hamburger.gif") no-repeat 50% 33%;
   @include breakpoint(highres) {
     background-image: url("../images/hamburger-retina.gif");
@@ -403,7 +390,7 @@ em {
 }
 
 /* ------------------------------------------
-  FRONTPAGE
+  FRONTPAGE INTRO
 --------------------------------------------- */
 .intro, .footer {
   float: left;
@@ -419,10 +406,10 @@ em {
 .intro {
   margin: 2em auto 3em;
   @include breakpoint(desk) {
-    margin: 5em auto 3.5em;
+    margin: 4.96em auto 4.1em;
     .intro-container {
       max-width: em(504);
-      margin: 0 auto;
+      margin: 2.4em auto;
     }
     p {
       margin-left: auto;
@@ -437,27 +424,9 @@ em {
     }
   }
   @include breakpoint(wall) {
-    margin-top: 6em;
+    margin-top: 5.86em;
   }
 
-}
-
-/* ------------------------------------------
-  FOOTER
---------------------------------------------- */
-.footer {
-  color: $color-grey;
-  text-align: center;
-  font-size: 16px;
-  width: 90%;
-  margin: 2.8em 5% 2em;
-  a {
-    color: $color-grey;
-  }
-  @include breakpoint(desk) {
-    margin-top: 6em;
-    margin-bottom: 4em;
-  }
 }
 
 /* ------------------------------------------
@@ -468,34 +437,66 @@ em {
   margin: 0 auto;
   text-align: left;
   margin-top: 3em;
-  @include breakpoint(desk) {
-    margin-top: 5em;
-  }
-
+  @include clearfix;
   ul {
     list-style-type: circle;
     font-weight: 600;
-    @include breakpoint(desk) {
+    @include breakpoint(lap) {
       margin-left: 0;
     }
+    @include breakpoint(wall) {
+      margin: 1.34em 0 2em;
+      line-height: 1.4;
+      width: 55%;
+      margin-left: -7%;
+      float: left;
+      li {
+        margin-bottom: 1.4em;
+      }
+      &.list-2 {
+        float: right;
+        margin-left: 0;
+        margin-right: -13%;
+      }
+    }
   }
-
 }
 
+#features {
+  @include breakpoint(wall) {
+    padding-bottom: 1.74em;
+    margin-bottom: 5.26em;
+    border-bottom: 1px solid lighten($color-grey, 10%);
+  }
+}
+
+/* ------------------------------------------
+  CODE BLOCKS
+--------------------------------------------- */
 pre, code {
-  font-family: monospace, monospace;
+  font-family: "panic sans", Monaco, monospace, monospace;
 }
 
 pre {
   padding: 2em 2em 1.3em;
   margin-bottom: 3em;
   font-size: 75%;
-  color: $color-black;
+  color: lighten($color-black, 4%);
   background: lighten($color-grey, 26%);
   white-space: pre;
   white-space: no-wrap;
   overflow-x: scroll;
-  @include box-shadow(0 1px 4px lighten($color-grey, 24%), inset 0 0 0 1px lighten($color-grey, 18%));
+  @include box-shadow(
+    0 1px 4px lighten($color-grey, 22%),
+    inset 0 0 0 1px lighten($color-grey, 18%)
+  );
+  &:hover {
+    background: lighten($color-grey, 27%);
+    @include box-shadow(
+      0 1px 4px lighten($color-grey, 22%),
+      inset 0 0 0 1px lighten($color-grey, 8%)
+    );
+  }
 }
 
 pre::-webkit-scrollbar {
@@ -513,9 +514,59 @@ pre::-webkit-scrollbar-thumb {
 /* ------------------------------------------
   HIGHLIGHTING
 --------------------------------------------- */
-.com { color: $color-grey; } // Comments
-.lit { color: $color-red }
-.pun { color: $color-red }
-.opn, .clo, .fun { color: $color-black; }
-.str, .atv { color: $color-red }
-.typ, .atn, .dec, .var { color: $color-brown; }
+.com { color: $color-grey } // Comments
+.lit { color: mix($color-brown, $color-red, 50%) }
+.pun { color: lighten($color-brown, 20%) }
+.opn, .clo, .fun { color: $color-black }
+.str, .atv { color: mix($color-brown, $color-red, 50%) }
+.typ, .atn, .dec, .var { color: $color-brown }
+
+/* ------------------------------------------
+  DOWNLOAD SECTION
+--------------------------------------------- */
+#download {
+  margin-top: 1em;
+  text-align: center;
+  @include breakpoint(desk) {
+    margin-top: 3em;
+  }
+  span {
+    width: 100%;
+    display: block;
+    margin: .2em 0;
+  }
+  @include breakpoint(desk) {
+    span {
+      width: auto;
+      display: inline;
+      margin: 0 .6em;
+    }
+  }
+  .repo {
+    background: $color-brown;
+    &:hover {
+      background: darken($color-brown, 10%);
+    }
+  }
+}
+
+/* ------------------------------------------
+  FOOTER
+--------------------------------------------- */
+.footer {
+  color: $color-grey;
+  text-align: center;
+  font-size: 16px;
+  width: 90%;
+  margin: 2.8em 5% 2em;
+  a {
+    color: $color-grey;
+    &:hover {
+      color: $color-black;
+    }
+  }
+  @include breakpoint(desk) {
+    margin-top: 6em;
+    margin-bottom: 4em;
+  }
+}

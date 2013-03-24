@@ -6,7 +6,7 @@ description: Prototype page description
 <div class="intro">
   <h1>Responsive Nav</h1>
   <div class="intro-container">
-    <p>Responsive navigation plugin without library dependencies and with fast touch screen support. Try it out by <em>resizing</em>&nbsp;this&nbsp;window.</p>
+    <p>Responsive navigation plugin without library dependencies and with fast touch screen support. Try it out by resizing&nbsp;this&nbsp;window.</p>
     <a href="https://github.com/viljamis/responsive-nav.js/archive/master.zip" rel="external" class="btn">Download</a>
   </div>
 </div>
@@ -17,31 +17,30 @@ description: Prototype page description
 
 <div id="features" class="section">
   <h2>Features</h2>
-  <p>Responsive Nav is a tiny JavaScript plugin (weighs ~1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from <em>max-height: 0</em> to <em>max-height: auto</em> which isn’t normally possible with CSS3&nbsp;transitions.</p>
-  <ul>
-    <li>~1kb minified and gzipped</li>
-    <li>Doesn’t require any external libraries</li>
-    <li>Simple markup using lists</li>
-    <li>Uses CSS3 transitions and touchstart</li>
-  </ul><ul>
-    <li>Removes the 300ms delay between a physical tap and the click&nbsp;event</li>
-    <li>Makes it possible to use CSS3 transition with max-height:&nbsp;auto</li>
-    <li>Built accessibility in mind, meaning that it works on screen readers&nbsp;too</li>
-    <li>Works in all major desktop and mobile browsers including IE6 and&nbsp;up</li>
+  <p>Responsive Nav is a tiny JavaScript plugin (weighs ~1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from max-height: 0 to max-height: auto which isn’t normally possible with CSS3&nbsp;transitions.</p>
+  <ul class="list-1">
+    <li>Weighs only ~1kb minified and gzipped.</li>
+    <li>Doesn’t require any external libraries.</li>
+    <li>Uses CSS3 transitions, touch events and simple markup.</li>
+    <li>Removes the 300ms delay between a physical tap and the click&nbsp;event.</li>
+  </ul><ul class="list-2">
+    <li>Makes it possible to use CSS3 transitions with max-height:&nbsp;auto.</li>
+    <li>Built accessibility in mind, meaning that everything will work on the screen readers&nbsp;too.</li>
+    <li>Works in all major desktop and mobile browsers including IE6 and&nbsp;up.</li>
   </ul>
 </div>
 
 <div id="instructions" class="section">
-  <h2>Instructions</h2>
-  <p>Following these 4 steps you should be able to get everything up and running. If you have any question or troubles, please post them to <a href="https://github.com/viljamis/responsive-nav.js/issues" rel="external">GitHub&nbsp;issues</a>.</p>
+  <h2>Usage Instructions</h2>
+  <p>Following the steps below you will be able to get the plugin up and running. If&nbsp;you have any problems, please post them to <a href="https://github.com/viljamis/responsive-nav.js/issues" rel="external">GitHub&nbsp;issues</a>.</p>
   
-<h3>Link files:</h3>
+<h3>Link files</h3>
 <pre class="prettyprint lang-html"><code>&lt;!-- Put these into the &lt;head> -->
 &lt;script src="responsive-nav.js">&lt;/script>
 &lt;link rel="stylesheet" href="responsive-nav.css">
 </code></pre>
 
-<h3>Add markup:</h3>
+<h3>Add markup</h3>
 <pre class="prettyprint lang-html"><code>&lt;div id="nav">
   &lt;ul>
     &lt;li class="active">&lt;a href="#">Home&lt;/a>&lt;/li>
@@ -52,14 +51,14 @@ description: Prototype page description
 &lt;/div>
 </code></pre>
 
-<h3>Hook up the plugin:</h3>
-<pre class="prettyprint lang-html"><code>&lt;!-- Put this right before the &lt;body> ending tag -->
+<h3>Hook up the plugin</h3>
+<pre class="prettyprint lang-html"><code>&lt;!-- Put this right before the &lt;/body> -->
 &lt;script>
   var navigation = new ResponsiveNav("#nav");
 &lt;/script>
 </code></pre>
 
-<h3>Customizable options:</h3>
+<h3>Customizable options</h3>
 <pre class="prettyprint lang-js"><code>var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the wrapper
   transition: 400, // Integer: Speed of the transition, in milliseconds
   label: "Menu", // String: Label for the navigation toggle
@@ -73,5 +72,5 @@ description: Prototype page description
 <div id="download" class="section">
   <a href="https://github.com/viljamis/responsive-nav.js/archive/master.zip" rel="external" class="btn">Download</a>
   <span>or</span>
-  <a href="https://github.com/viljamis/responsive-nav.js" rel="external" class="btn">View the repository</a>
+  <a href="https://github.com/viljamis/responsive-nav.js" rel="external" class="btn repo">View source on GitHub</a>
 </div>
