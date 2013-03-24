@@ -330,8 +330,9 @@ p {
     background: transparent;
     color: $color-black;
     border: 0;
+    @include transition(background .5s ease);
     &:hover {
-      text-decoration: underline;
+      background: lighten(mix($color-grey, $color-brown, 70%), 26%);
     }
   }
 }

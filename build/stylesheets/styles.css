@@ -512,22 +512,26 @@ p {
       font-size: 1.1em;
       background: transparent;
       color: #37302a;
-      border: 0; }
-      /* line 334, styles.css.scss */
+      border: 0;
+      -webkit-transition: background 0.5s ease;
+      -moz-transition: background 0.5s ease;
+      -o-transition: background 0.5s ease;
+      transition: background 0.5s ease; }
+      /* line 335, styles.css.scss */
       #nav a:hover {
-        text-decoration: underline; } }
+        background: #e7e5e3; } }
 
 @media screen and (min-width: 46.25em) {
-  /* line 340, styles.css.scss */
+  /* line 341, styles.css.scss */
   #nav .active a {
     -webkit-font-smoothing: subpixel-antialiased;
     color: white;
     background: #f4421a; }
-    /* line 345, styles.css.scss */
+    /* line 346, styles.css.scss */
     #nav .active a:hover {
       text-decoration: none; } }
 
-/* line 351, styles.css.scss */
+/* line 352, styles.css.scss */
 .js #nav {
   clip: rect(0 0 0 0);
   max-height: 0;
@@ -535,12 +539,12 @@ p {
   display: block;
   overflow: hidden; }
   @media screen and (min-width: 46.25em) {
-    /* line 351, styles.css.scss */
+    /* line 352, styles.css.scss */
     .js #nav {
       position: static;
       max-height: none; } }
 
-/* line 363, styles.css.scss */
+/* line 364, styles.css.scss */
 #nav.opened {
   position: relative;
   max-height: 9999px; }
@@ -548,7 +552,7 @@ p {
 /* ------------------------------------------
   NAVIGATION TOGGLE
 --------------------------------------------- */
-/* line 371, styles.css.scss */
+/* line 372, styles.css.scss */
 #nav-toggle {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -563,7 +567,7 @@ p {
   display: block;
   background: #f4421a url("../images/hamburger.gif") no-repeat 50% 33%; }
   @media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (min--moz-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 2 / 1), screen and (min-device-pixel-ratio: 1.3), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
-    /* line 371, styles.css.scss */
+    /* line 372, styles.css.scss */
     #nav-toggle {
       background-image: url("../images/hamburger-retina.gif");
       -webkit-background-size: 100px 100px !important;
@@ -571,54 +575,54 @@ p {
       -o-background-size: 100px 100px !important;
       background-size: 100px 100px !important; } }
   @media screen and (min-width: 46.25em) {
-    /* line 371, styles.css.scss */
+    /* line 372, styles.css.scss */
     #nav-toggle {
       display: none; } }
 
 /* ------------------------------------------
   FRONTPAGE INTRO
 --------------------------------------------- */
-/* line 396, styles.css.scss */
+/* line 397, styles.css.scss */
 .intro, .footer {
   float: left;
   width: 100%; }
 
 @media screen and (min-width: 62.5em) {
-  /* line 401, styles.css.scss */
+  /* line 402, styles.css.scss */
   .image {
     margin-left: -1.2em; } }
 
-/* line 407, styles.css.scss */
+/* line 408, styles.css.scss */
 .intro {
   margin: 2em auto 3em; }
   @media screen and (min-width: 46.25em) {
-    /* line 407, styles.css.scss */
+    /* line 408, styles.css.scss */
     .intro {
       margin: 4.96em auto 4.1em; }
-      /* line 411, styles.css.scss */
+      /* line 412, styles.css.scss */
       .intro .intro-container {
         max-width: 31.5em;
         margin: 2.4em auto; }
-      /* line 415, styles.css.scss */
+      /* line 416, styles.css.scss */
       .intro p {
         margin-left: auto;
         margin-right: auto;
         max-width: 21.25em;
         text-align: left;
         float: left; }
-      /* line 422, styles.css.scss */
+      /* line 423, styles.css.scss */
       .intro .btn {
         margin: 0.7em 1.3em 0 0;
         float: right; } }
   @media screen and (min-width: 62.5em) {
-    /* line 407, styles.css.scss */
+    /* line 408, styles.css.scss */
     .intro {
       margin-top: 5.86em; } }
 
 /* ------------------------------------------
   SECTIONS
 --------------------------------------------- */
-/* line 436, styles.css.scss */
+/* line 437, styles.css.scss */
 .section {
   max-width: 31.5em;
   margin: 0 auto;
@@ -632,33 +636,33 @@ p {
   /* line 46, styles.css.scss */
   .section:after {
     clear: both; }
-  /* line 442, styles.css.scss */
+  /* line 443, styles.css.scss */
   .section ul {
     list-style-type: circle;
     font-weight: 600; }
     @media screen and (min-width: 37.5em) {
-      /* line 442, styles.css.scss */
+      /* line 443, styles.css.scss */
       .section ul {
         margin-left: 0; } }
     @media screen and (min-width: 62.5em) {
-      /* line 442, styles.css.scss */
+      /* line 443, styles.css.scss */
       .section ul {
         margin: 1.34em 0 2em;
         line-height: 1.4;
         width: 55%;
         margin-left: -7%;
         float: left; }
-        /* line 454, styles.css.scss */
+        /* line 455, styles.css.scss */
         .section ul li {
           margin-bottom: 1.4em; }
-        /* line 457, styles.css.scss */
+        /* line 458, styles.css.scss */
         .section ul.list-2 {
           float: right;
           margin-left: 0;
           margin-right: -13%; } }
 
 @media screen and (min-width: 62.5em) {
-  /* line 466, styles.css.scss */
+  /* line 467, styles.css.scss */
   #features {
     padding-bottom: 1.74em;
     margin-bottom: 5.26em;
@@ -667,11 +671,11 @@ p {
 /* ------------------------------------------
   CODE BLOCKS
 --------------------------------------------- */
-/* line 477, styles.css.scss */
+/* line 478, styles.css.scss */
 pre, code {
   font-family: "panic sans", Monaco, monospace, monospace; }
 
-/* line 481, styles.css.scss */
+/* line 482, styles.css.scss */
 pre {
   padding: 2em 2em 1.3em;
   margin-bottom: 3em;
@@ -684,21 +688,21 @@ pre {
   -webkit-box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #e7e6e5;
   -moz-box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #e7e6e5;
   box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #e7e6e5; }
-  /* line 494, styles.css.scss */
+  /* line 495, styles.css.scss */
   pre:hover {
     background: #fdfdfd;
     -webkit-box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #cecdcb;
     -moz-box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #cecdcb;
     box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #cecdcb; }
 
-/* line 503, styles.css.scss */
+/* line 504, styles.css.scss */
 pre::-webkit-scrollbar {
   -webkit-appearance: none;
   background-color: transparent;
   width: 8px;
   height: 8px; }
 
-/* line 510, styles.css.scss */
+/* line 511, styles.css.scss */
 pre::-webkit-scrollbar-thumb {
   border-radius: 0;
   background-color: #d3d2d0; }
@@ -706,77 +710,77 @@ pre::-webkit-scrollbar-thumb {
 /* ------------------------------------------
   HIGHLIGHTING
 --------------------------------------------- */
-/* line 518, styles.css.scss */
+/* line 519, styles.css.scss */
 .com {
   color: #bab9b6; }
 
-/* line 519, styles.css.scss */
+/* line 520, styles.css.scss */
 .lit {
   color: #bc593d; }
 
-/* line 520, styles.css.scss */
+/* line 521, styles.css.scss */
 .pun {
   color: #b3a497; }
 
-/* line 521, styles.css.scss */
+/* line 522, styles.css.scss */
 .opn, .clo, .fun {
   color: #37302a; }
 
-/* line 522, styles.css.scss */
+/* line 523, styles.css.scss */
 .str, .atv {
   color: #bc593d; }
 
-/* line 523, styles.css.scss */
+/* line 524, styles.css.scss */
 .typ, .atn, .dec, .var {
   color: #847160; }
 
 /* ------------------------------------------
   DOWNLOAD SECTION
 --------------------------------------------- */
-/* line 528, styles.css.scss */
+/* line 529, styles.css.scss */
 #download {
   margin-top: 1em;
   text-align: center; }
   @media screen and (min-width: 46.25em) {
-    /* line 528, styles.css.scss */
+    /* line 529, styles.css.scss */
     #download {
       margin-top: 3em; } }
-  /* line 534, styles.css.scss */
+  /* line 535, styles.css.scss */
   #download span {
     width: 100%;
     display: block;
     margin: 0.2em 0; }
   @media screen and (min-width: 46.25em) {
-    /* line 540, styles.css.scss */
+    /* line 541, styles.css.scss */
     #download span {
       width: auto;
       display: inline;
       margin: 0 0.6em; } }
-  /* line 546, styles.css.scss */
+  /* line 547, styles.css.scss */
   #download .repo {
     background: #847160; }
-    /* line 548, styles.css.scss */
+    /* line 549, styles.css.scss */
     #download .repo:hover {
       background: #66584b; }
 
 /* ------------------------------------------
   FOOTER
 --------------------------------------------- */
-/* line 557, styles.css.scss */
+/* line 558, styles.css.scss */
 .footer {
   color: #bab9b6;
   text-align: center;
   font-size: 16px;
   width: 90%;
   margin: 2.8em 5% 2em; }
-  /* line 563, styles.css.scss */
+  /* line 564, styles.css.scss */
   .footer a {
     color: #bab9b6; }
-    /* line 565, styles.css.scss */
+    /* line 566, styles.css.scss */
     .footer a:hover {
       color: #37302a; }
   @media screen and (min-width: 46.25em) {
-    /* line 557, styles.css.scss */
+    /* line 558, styles.css.scss */
     .footer {
       margin-top: 6em;
       margin-bottom: 4em; } }
