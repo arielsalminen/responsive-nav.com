@@ -75,9 +75,10 @@ __________\///__________\////////////________
 /* ------------------------------------------
   COLOURS
 --------------------------------------------- */
-$color-red: #f43f00;
-$color-black: #151414;
-$color-grey: #c5bfbd;
+$color-red: #f4421a;
+$color-black: #37302a;
+$color-grey: #bab9b6;
+$color-brown: #847160;
 $color-white: #fff;
 
 /* ------------------------------------------
@@ -153,7 +154,7 @@ body {
 }
 
 .wrapper {
-  max-width: em(1000);
+  max-width: em(760);
   margin: 0 auto;
 }
 
@@ -214,8 +215,42 @@ h1 {
   }
 }
 
+h2 {
+  -webkit-font-smoothing: antialiased;
+  font: normal 200%/0.82 "franklin-custom", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: .6em;
+  color: $color-red;
+  -moz-font-feature-settings: "liga=1, kern=1";
+  -ms-font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+  @include breakpoint(desk) {
+    margin-bottom: .2em;
+    font-size: 300%;
+  }
+}
+
+h3 {
+  -webkit-font-smoothing: antialiased;
+  font: normal 150%/0.82 "franklin-custom", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: .6em;
+  letter-spacing: 1px;
+  color: $color-brown;
+  -moz-font-feature-settings: "liga=1, kern=1";
+  -ms-font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+  @include breakpoint(desk) {
+    font-size: 175%;
+  }
+}
+
 p {
   margin-bottom: 1.5em;
+}
+
+em {
+  font-style: italic;
 }
 
 /* ------------------------------------------
@@ -277,7 +312,7 @@ p {
   }
 }
 
-.index #nav .index a {
+#nav .active a {
   @include breakpoint(desk) {
     color: $color-white;
     background: $color-red;
@@ -306,11 +341,12 @@ p {
   width: 70px;
   height: 55px;
   float: right;
+  @include prevent-user-select;
   @include image-replacement;
   background: $color-red url("../images/hamburger.gif") no-repeat 50% 33%;
   @include breakpoint(highres) {
     background-image: url("../images/hamburger-retina.gif");
-    @include background-size(25px 20px !important);
+    @include background-size(100px 100px !important);
   }
   @include breakpoint(desk) {
     display: none;
@@ -347,39 +383,12 @@ p {
       float: right;
     }
   }
-
-}
-
-.images {
-  position: relative;
-
-  .iphone {
-    position: absolute;
-    bottom: -8%;
-    left: 0;
-    z-index: 2;
-    width: 30%;
-  }
-  
-  .ipad {
-    width: 88%;
-    z-index: 1;
-    float: right;
-    position: relative; 
-  }
-  
   @include breakpoint(wall) {
-    margin: 0 auto;
-    float: none;
-    @include clearfix;
-    width: 60%;
-    .iphone {
-      bottom: -5%;
-      width: auto;
-    }
+    margin-top: 6em;
   }
 
 }
+
 
 /* ------------------------------------------
   FOOTER
@@ -389,14 +398,66 @@ p {
   text-align: center;
   font-size: 14px;
   width: 90%;
-  margin: 4.8em 5% 2em;
+  margin: 2.8em 5% 2em;
   a {
     color: $color-grey;
   }
   @include breakpoint(desk) {
-    margin-top: 6em;
-  }
-  @include breakpoint(wall) {
-    margin: 8em 5% 4em;
+    margin-bottom: 4em;
   }
 }
+
+
+/* ------------------------------------------
+  SECTIONS
+--------------------------------------------- */
+.section {
+  text-align: left;
+  margin-top: 3em;
+  
+  ul {
+    list-style-type: circle;
+  }
+
+  li {
+    margin-bottom: .5em;
+  }
+
+}
+
+pre,code {
+  font-family: monospace, monospace;
+}
+
+pre {
+  padding: 2em 2em 1.3em;
+  margin-bottom: 3em;
+  font-size: 81.25%;
+  color: $color-black;
+  background: lighten($color-grey, 26%);
+  white-space: pre;
+  white-space: no-wrap;
+  overflow-x: scroll;
+}
+
+pre::-webkit-scrollbar {
+  -webkit-appearance: none;
+  background-color: transparent;
+  width: 8px;
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: lighten($color-grey, 18%);
+}
+
+/* ------------------------------------------
+  HIGHLIGHTING
+--------------------------------------------- */
+.com { color: $color-grey; } // Comments
+.lit { color: $color-red }
+.pun { color: $color-red }
+.opn, .clo, .fun { color: $color-black; }
+.str, .atv { color: $color-red }
+.typ, .atn, .dec, .var { color: $color-brown; }
