@@ -320,6 +320,9 @@ p {
   border-bottom: 1px solid $color-white;
   padding: .5em 1em;
   float: left;
+  &:focus {
+    background: darken($color-red, 10%);
+  }
   @include breakpoint(desk) {
     -webkit-font-smoothing: antialiased;
     margin: 0;
