@@ -201,11 +201,11 @@ var ResponsiveNav = (function (window, document) {
 
       // Default options
       this.options = {
-        transition: 300,    // Integer: Speed of the transition, in milliseconds, default is "300"
-        label: "Menu",      // String: Label for the navigation toggle, default is "Menu"
-        insert: "after",    // String: Insert the toggle before or after the navigation, default is "after"
-        customToggle: "",   // Selector: Specify the ID of a custom toggle, default is ""
-        debug: false        // Boolean: Log debug messages to console, true or false, default is "false"
+        transition: 400,    // Integer: Speed of the transition, in milliseconds
+        label: "Menu",      // String: Label for the navigation toggle
+        insert: "after",    // String: Insert the toggle before or after the navigation
+        customToggle: "",   // Selector: Specify the ID of a custom toggle
+        debug: false        // Boolean: Log debug messages to console, true or false
       };
 
       // User defined options
@@ -254,6 +254,7 @@ var ResponsiveNav = (function (window, document) {
       removeEvent(window, "resize", this);
       removeEvent(navToggle, "mousedown", this);
       removeEvent(navToggle, "touchstart", this);
+      removeEvent(navToggle, "keyup", this);
       removeEvent(navToggle, "click", this);
 
       navToggle.parentNode.removeChild(navToggle);
@@ -304,8 +305,11 @@ var ResponsiveNav = (function (window, document) {
       case "touchstart":
         this.__ontouchstart(evt);
         break;
+      case "keyup":
+        this.__onkeyup(evt);
+        break;
       case "click":
-        this.__click(evt);
+        this.__onclick(evt);
         break;
       case "load":
       case "resize":
@@ -325,6 +329,7 @@ var ResponsiveNav = (function (window, document) {
       addEvent(window, "resize", this);
       addEvent(navToggle, "mousedown", this);
       addEvent(navToggle, "touchstart", this);
+      addEvent(navToggle, "keyup", this);
       addEvent(navToggle, "click", this);
     },
 
@@ -377,7 +382,13 @@ var ResponsiveNav = (function (window, document) {
       this.toggle(e);
     },
 
-    __click: function (e) {
+    __onkeyup: function (e) {
+      if (e.keyCode === 13) {
+        this.toggle(e);
+      }
+    },
+
+    __onclick: function (e) {
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
     },
 

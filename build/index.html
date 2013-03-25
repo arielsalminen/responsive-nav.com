@@ -4,25 +4,31 @@
     <meta charset="utf-8">
     <title>Responsive Nav</title>
     <meta name="author" content="@viljamis">
+    
+      <meta name="description" content="...">
+    
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-title" content="Responsive Nav">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="">
     <script src="//use.typekit.net/sxv1brn.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
-    <link href="stylesheets/styles.css?v=4" media="screen" rel="stylesheet" type="text/css" />
-    <script src="javascripts/all.js" type="text/javascript"></script>
+    
+      <link href="/stylesheets/styles.css" media="screen" rel="stylesheet" type="text/css" />
+    
+    <script src="/javascripts/all.js" type="text/javascript"></script>
   </head>
   <body class="index" onload="prettyPrint()">
     <div class="border" id="home"></div>
     <div class="wrapper">
       <div id="nav">
         <ul>
-          <li class="active"><a href="http://responsive-nav.com">Home</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#instructions">Usage Instructions</a></li>
-          <li><a href="https://github.com/viljamis/responsive-nav.js" rel="external">View on GitHub</a></li>
+          <li class="active"><a href="http://responsive-nav.com" tabindex="5">Home</a></li>
+          <li><a href="#features" tabindex="4">Features</a></li>
+          <li><a href="#instructions" tabindex="3">Usage Instructions</a></li>
+          <li><a href="https://github.com/viljamis/responsive-nav.js" rel="external" tabindex="2">View on GitHub</a></li>
         </ul>
       </div>
-      <a href="#nav" id="nav-toggle">Menu</a>
+      <a href="#nav" id="nav-toggle" tabindex="1">Menu</a>
       <div class="content">
         <div class="intro">
   <h1>Responsive Nav</h1>
