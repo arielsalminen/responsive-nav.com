@@ -19,7 +19,7 @@
   @if $media == hand {
     @media screen and (min-width: em(460)) { @content; }
   }
-  @if $media == lap {
+  @else if $media == lap {
     @media screen and (min-width: em(600)) { @content; }
   }
   @else if $media == desk {
@@ -27,6 +27,9 @@
   }
   @else if $media == wall {
     @media screen and (min-width: em(1000)) { @content; }
+  }
+  @else if $media == helicopter {
+    @media screen and (min-width: em(1700)) { @content; }
   }
   @else if $media == highres {
     @media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (min--moz-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 2/1), screen and (min-device-pixel-ratio: 1.3), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) { @content; }
@@ -126,6 +129,9 @@ body {
   font: normal 112.5%/1.4 $font-body;
   @include breakpoint(hand) {
     font-size: 125%;
+  }
+  @include breakpoint(helicopter) {
+    font-size: 150%;
   }
 }
 
