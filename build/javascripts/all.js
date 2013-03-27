@@ -119,14 +119,36 @@ if (("ontouchstart" in window) || window.DocumentTouch && document instanceof Do
 
 /* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true, boss:true,
 bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
-/* exported ResponsiveNav */
+/* exported responsiveNav */
 
 
-var ResponsiveNav = (function (window, document) {
+var responsiveNav = (function (window, document) {
+
+  var computed = !!window.getComputedStyle;
+
+  // getComputedStyle polyfill
+  if (!window.getComputedStyle) {
+    window.getComputedStyle = function(el) {
+      this.el = el;
+      this.getPropertyValue = function(prop) {
+        var re = /(\-([a-z]){1})/g;
+        if (prop === "float") {
+          prop = "styleFloat";
+        }
+        if (re.test(prop)) {
+          prop = prop.replace(re, function () {
+            return arguments[2].toUpperCase();
+          });
+        }
+        return el.currentStyle[prop] ? el.currentStyle[prop] : null;
+      };
+      return this;
+    };
+  }
 
   var navToggle,
     aria = "aria-hidden",
-    computed = window.getComputedStyle ? true : false,
+    docEl = document.documentElement,
     head = document.getElementsByTagName("head")[0],
     styleElement = document.createElement("style"),
     navOpen = false,
@@ -199,6 +221,9 @@ var ResponsiveNav = (function (window, document) {
     ResponsiveNav = function (el, options) {
       var i;
 
+      // Adds "js" class for <html>
+      docEl.className = docEl.className + " js ";
+
       // Default options
       this.options = {
         transition: 400,    // Integer: Speed of the transition, in milliseconds
@@ -225,9 +250,9 @@ var ResponsiveNav = (function (window, document) {
       }
 
       // Wrapper
-      var wrapperEl = el.replace("#", "");
-      if (document.getElementById(wrapperEl)) {
-        this.wrapper = document.getElementById(wrapperEl);
+      this.wrapperEl = el.replace("#", "");
+      if (document.getElementById(this.wrapperEl)) {
+        this.wrapper = document.getElementById(this.wrapperEl);
       } else {
         // If el doesn't exists, stop here.
         log("The nav element you are trying to select doesn't exist");
@@ -249,6 +274,7 @@ var ResponsiveNav = (function (window, document) {
       this.wrapper.removeAttribute(aria);
       this.wrapper = null;
       this.wrapper.inner = null;
+      __instance = null;
 
       removeEvent(window, "load", this);
       removeEvent(window, "resize", this);
@@ -352,6 +378,7 @@ var ResponsiveNav = (function (window, document) {
         var toggle = document.createElement("a");
         toggle.setAttribute("href", "#");
         toggle.setAttribute("id", "nav-toggle");
+        toggle.setAttribute("tabindex", "1");
         toggle.innerHTML = this.options.label;
 
         if (this.options.insert === "after") {
@@ -383,7 +410,9 @@ var ResponsiveNav = (function (window, document) {
     },
 
     __onkeyup: function (e) {
-      if (e.keyCode === 13) {
+      var evt = e || window.event;
+
+      if (evt.keyCode === 13) {
         this.toggle(e);
       }
     },
@@ -403,37 +432,49 @@ var ResponsiveNav = (function (window, document) {
     },
 
     __resize: function () {
-      if (computed) {
-        if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
-          navToggle.setAttribute(aria, false);
+      if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
+        navToggle.setAttribute(aria, false);
 
-          if (this.wrapper.className.match(/(^|\s)closed(\s|$)/)) {
-            this.wrapper.setAttribute(aria, true);
-            this.wrapper.style.position = "absolute";
-          }
-
-          this.__createStyles();
-          this.__transitions();
-
-          var savedHeight = this.wrapper.inner.offsetHeight,
-            innerStyles = "#nav.opened{max-height:" + savedHeight + "px }";
-          styleElement.innerHTML = innerStyles;
-          innerStyles = "";
-          log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
-
-        } else {
-          navToggle.setAttribute(aria, true);
-          this.wrapper.setAttribute(aria, false);
-          this.wrapper.style.position = "relative";
-
-          this.__removeStyles();
+        if (this.wrapper.className.match(/(^|\s)closed(\s|$)/)) {
+          this.wrapper.setAttribute(aria, true);
+          this.wrapper.style.position = "absolute";
         }
+
+        this.__createStyles();
+        this.__transitions();
+
+        var savedHeight = this.wrapper.inner.offsetHeight,
+          innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px }";
+
+        // This line causes troubles on old IE's for some reason, so let's hide it
+        if (computed) {
+          styleElement.innerHTML = innerStyles;
+        }
+
+        innerStyles = "";
+        log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
+
+      } else {
+        navToggle.setAttribute(aria, true);
+        this.wrapper.setAttribute(aria, false);
+        this.wrapper.style.position = "relative";
+
+        this.__removeStyles();
       }
     }
 
   };
 
-  return ResponsiveNav;
+  var __instance;
+  function rn (el, options) {
+    if (!__instance) {
+      __instance = new ResponsiveNav(el, options);
+    }
+
+    return __instance;
+  }
+
+  return rn;
 })(window, document);
 var q=null;window.PR_SHOULD_USE_CONTINUATION=!0;
 (function(){function L(a){function m(a){var f=a.charCodeAt(0);if(f!==92)return f;var b=a.charAt(1);return(f=r[b])?f:"0"<=b&&b<="7"?parseInt(a.substring(1),8):b==="u"||b==="x"?parseInt(a.substring(2),16):a.charCodeAt(1)}function e(a){if(a<32)return(a<16?"\\x0":"\\x")+a.toString(16);a=String.fromCharCode(a);if(a==="\\"||a==="-"||a==="["||a==="]")a="\\"+a;return a}function h(a){for(var f=a.substring(1,a.length-1).match(/\\u[\dA-Fa-f]{4}|\\x[\dA-Fa-f]{2}|\\[0-3][0-7]{0,2}|\\[0-7]{1,2}|\\[\S\s]|[^\\]/g),a=

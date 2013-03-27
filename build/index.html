@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js preload no-fontface no-fileinput no-touch" lang="en">
+<html class="no-js preload no-fontface no-touch" lang="en">
   <head>
     <meta charset="utf-8">
     <title>Responsive Nav</title>
@@ -8,21 +8,20 @@
     <meta name="apple-mobile-web-app-title" content="Responsive Nav">
     <script src="//use.typekit.net/sxv1brn.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
-    <link href="stylesheets/styles.css?v=5" rel="stylesheet" type="text/css">
-    <script src="javascripts/all.js?v=5"></script>
+    <link href="stylesheets/styles.css?v=6" rel="stylesheet" type="text/css">
+    <script src="javascripts/all.js?v=6" type="text/javascript"></script>
   </head>
   <body class="index" onload="prettyPrint()">
     <div class="border" id="home"></div>
     <div class="wrapper">
       <div id="nav">
         <ul>
-          <li class="active"><a href="http://responsive-nav.com" tabindex="2">Home</a></li>
-          <li><a href="#features" tabindex="3">Features</a></li>
-          <li><a href="#instructions" tabindex="4">Usage Instructions</a></li>
-          <li><a href="https://github.com/viljamis/responsive-nav.js" rel="external" tabindex="5">View on GitHub</a></li>
+          <li class="active"><a href="http://responsive-nav.com">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#instructions">Usage Instructions</a></li>
+          <li><a href="https://github.com/viljamis/responsive-nav.js" rel="external">View on GitHub</a></li>
         </ul>
       </div>
-      <a href="#nav" id="nav-toggle" tabindex="1">Menu</a>
       <div class="content">
         <div class="intro">
   <h1>Responsive Nav</h1>
@@ -32,9 +31,7 @@
   </div>
 </div>
 
-<a href="#" title="View this demo" alt="View this demo">
-  <img src="images/illustration.jpg" class="image" alt="Responsive Nav displayd in various sizes">
-</a>
+<img src="images/illustration.jpg" class="image" alt="Responsive Nav displayd in various sizes">
 
 <div id="features" class="section">
   <h2>Features</h2>
@@ -46,7 +43,7 @@
     <li>Removes the 300ms delay between a physical tap and the click&nbsp;event.</li>
   </ul><ul class="list-2">
     <li>Makes it possible to use CSS3 transitions with max-height:&nbsp;auto.</li>
-    <li>Built accessibility in mind, meaning that everything will work on the screen readers&nbsp;too.</li>
+    <li>Built accessibility in mind, meaning that everything works on screen readers and JavaScript disabled&nbsp;too.</li>
     <li>Works in all major desktop and mobile browsers including IE6 and&nbsp;up.</li>
   </ul>
 </div>
@@ -64,7 +61,7 @@
 <h3>Add markup</h3>
 <pre class="prettyprint lang-html"><code>&lt;div id="nav">
   &lt;ul>
-    &lt;li class="active">&lt;a href="#">Home&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#">Home&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#">About&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#">Projects&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#">Contact&lt;/a>&lt;/li>
@@ -73,20 +70,28 @@
 </code></pre>
 
 <h3>Hook up the plugin</h3>
-<pre class="prettyprint lang-html"><code>&lt;!-- Put this right before the &lt;/body> -->
+<pre class="prettyprint lang-html"><code>&lt;!-- Put this right before the &lt;/body> closing tag -->
 &lt;script>
-  var navigation = new ResponsiveNav("#nav");
+  var navigation = responsiveNav("#nav");
 &lt;/script>
 </code></pre>
 
 <h3>Customizable options</h3>
-<pre class="prettyprint lang-js"><code>var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the wrapper
+<pre class="prettyprint lang-js"><code>var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
   transition: 400, // Integer: Speed of the transition, in milliseconds
   label: "Menu", // String: Label for the navigation toggle
   insert: "after", // String: Insert the toggle before or after the navigation
   customToggle: "", // Selector: Specify the ID of a custom toggle
   debug: false // Boolean: Log debug messages to console, true or false
 });
+</code></pre>
+
+<h3>Public methods</h3>
+<pre class="prettyprint lang-js"><code>// Destroy
+navigation.destroy();
+
+// Toggle
+navigation.toggle();
 </code></pre>
 </div>
 
@@ -100,11 +105,7 @@
     </div>
     <script>
       // Init responsive-nav.js
-      var navigation = new ResponsiveNav("#nav", {
-        transition: 400, // Integer: Speed of the transition, in milliseconds, default is "300"
-        customToggle: "#nav-toggle", // Selector: Specify the ID of a custom toggle, default is ""
-        debug: false // Boolean: Log debug messages to console, true or false, default is "false"
-      });
+      var navigation = responsiveNav("#nav");
     </script>
   </body>
 </html>

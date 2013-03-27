@@ -31,6 +31,9 @@
   @else if $media == helicopter {
     @media screen and (min-width: em(1700)) { @content; }
   }
+  @else if $media == microscope {
+    @media screen and (max-width: em(300)) { @content; }
+  }
   @else if $media == highres {
     @media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (min--moz-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 2/1), screen and (min-device-pixel-ratio: 1.3), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) { @content; }
   }
@@ -53,7 +56,7 @@
 /* ------------------------------------------
   COLOURS
 --------------------------------------------- */
-$color-red: #f4421a;
+$color-red: #f43c12;
 $color-black: #37302a;
 $color-grey: #bab9b6;
 $color-brown: #847160;
@@ -120,7 +123,7 @@ img, video {
   BASE
 --------------------------------------------- */
 body {
-  min-width: 280px;
+  min-width: 200px;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -132,6 +135,9 @@ body {
   }
   @include breakpoint(helicopter) {
     font-size: 150%;
+  }
+  @include breakpoint(microscope) {
+    font-size: 87.5%;
   }
 }
 
@@ -174,7 +180,6 @@ body {
   height: .5em;
   background: $color-red;
 }
-
 
 /* ------------------------------------------
   LINKS
@@ -328,6 +333,7 @@ p {
   float: left;
   &:focus {
     background: darken($color-red, 10%);
+    outline: none;
   }
   @include breakpoint(desk) {
     -webkit-font-smoothing: antialiased;
@@ -338,7 +344,8 @@ p {
     color: $color-black;
     border: 0;
     @include transition(background .5s ease);
-    &:hover {
+    &:hover,
+    &:focus {
       background: lighten(mix($color-grey, $color-brown, 70%), 26%);
     }
   }
@@ -351,6 +358,9 @@ p {
     background: $color-red;
     &:hover {
       text-decoration: none;
+    }
+    &:focus {
+      background: darken($color-red, 10%);
     }
   }
 } 
@@ -407,7 +417,7 @@ p {
 
 .image {
   @include breakpoint(wall) {
-    margin-left: -1.2em;
+    margin-left: -0.5em;
   }
 }
 

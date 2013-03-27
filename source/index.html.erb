@@ -11,9 +11,7 @@ description: ...
   </div>
 </div>
 
-<a href="#" title="View this demo" alt="View this demo">
-  <img src="images/illustration.jpg" class="image" alt="Responsive Nav displayd in various sizes">
-</a>
+<img src="images/illustration.jpg" class="image" alt="Responsive Nav displayd in various sizes">
 
 <div id="features" class="section">
   <h2>Features</h2>
@@ -25,7 +23,7 @@ description: ...
     <li>Removes the 300ms delay between a physical tap and the click&nbsp;event.</li>
   </ul><ul class="list-2">
     <li>Makes it possible to use CSS3 transitions with max-height:&nbsp;auto.</li>
-    <li>Built accessibility in mind, meaning that everything will work on the screen readers&nbsp;too.</li>
+    <li>Built accessibility in mind, meaning that everything works on screen readers and JavaScript disabled&nbsp;too.</li>
     <li>Works in all major desktop and mobile browsers including IE6 and&nbsp;up.</li>
   </ul>
 </div>
@@ -43,7 +41,7 @@ description: ...
 <h3>Add markup</h3>
 <pre class="prettyprint lang-html"><code>&lt;div id="nav">
   &lt;ul>
-    &lt;li class="active">&lt;a href="#">Home&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#">Home&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#">About&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#">Projects&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#">Contact&lt;/a>&lt;/li>
@@ -52,20 +50,28 @@ description: ...
 </code></pre>
 
 <h3>Hook up the plugin</h3>
-<pre class="prettyprint lang-html"><code>&lt;!-- Put this right before the &lt;/body> -->
+<pre class="prettyprint lang-html"><code>&lt;!-- Put this right before the &lt;/body> closing tag -->
 &lt;script>
-  var navigation = new ResponsiveNav("#nav");
+  var navigation = responsiveNav("#nav");
 &lt;/script>
 </code></pre>
 
 <h3>Customizable options</h3>
-<pre class="prettyprint lang-js"><code>var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the wrapper
+<pre class="prettyprint lang-js"><code>var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
   transition: 400, // Integer: Speed of the transition, in milliseconds
   label: "Menu", // String: Label for the navigation toggle
   insert: "after", // String: Insert the toggle before or after the navigation
   customToggle: "", // Selector: Specify the ID of a custom toggle
   debug: false // Boolean: Log debug messages to console, true or false
 });
+</code></pre>
+
+<h3>Public methods</h3>
+<pre class="prettyprint lang-js"><code>// Destroy
+navigation.destroy();
+
+// Toggle
+navigation.toggle();
 </code></pre>
 </div>
 
