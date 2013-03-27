@@ -29,7 +29,7 @@
     @media screen and (min-width: em(1000)) { @content; }
   }
   @else if $media == helicopter {
-    @media screen and (min-width: em(1700)) { @content; }
+    @media screen and (min-width: em(1660)) { @content; }
   }
   @else if $media == microscope {
     @media screen and (max-width: em(300)) { @content; }
