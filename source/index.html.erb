@@ -15,9 +15,9 @@ description: ...
 
 <div id="features" class="section">
   <h2>Features</h2>
-  <p>Responsive Nav is a tiny JavaScript plugin (weighs ~1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from max-height: 0 to max-height: auto which isn’t normally possible with CSS3&nbsp;transitions.</p>
+  <p>Responsive Nav is a tiny JavaScript plugin (weighs 1.5kb minified and gzipped) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from max-height: 0 to max-height: auto which isn’t normally possible with CSS3&nbsp;transitions.</p>
   <ul class="list-1">
-    <li>Weighs only ~1kb minified and gzipped.</li>
+    <li>Weighs only 1.5kb minified and gzipped.</li>
     <li>Doesn’t require any external libraries.</li>
     <li>Uses CSS3 transitions, touch events and simple markup.</li>
     <li>Removes the 300ms delay between a physical tap and the click&nbsp;event.</li>
@@ -62,6 +62,9 @@ description: ...
   label: "Menu", // String: Label for the navigation toggle
   insert: "after", // String: Insert the toggle before or after the navigation
   customToggle: "", // Selector: Specify the ID of a custom toggle
+  tabIndex: 1, // Integer: Specify the default toggle's tabindex
+  openPos: "relative", // String: Position of the opened nav, relative or static
+  jsClass: "js", // String: 'JS enabled' class which is added to <html> el
   debug: false // Boolean: Log debug messages to console, true or false
 });
 </code></pre>
