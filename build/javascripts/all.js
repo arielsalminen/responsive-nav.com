@@ -109,7 +109,7 @@ if (("ontouchstart" in window) || window.DocumentTouch && document instanceof Do
   w.addEventListener("devicemotion", checkTilt, false);
 
 })(this);
-/*! responsive-nav.js v1.01
+/*! responsive-nav.js v1.05
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -117,8 +117,8 @@ if (("ontouchstart" in window) || window.DocumentTouch && document instanceof Do
  * Available under the MIT license
  */
 
-/* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true, boss:true,
-bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
+/* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true,
+boss:true, bitwise:true, browser:true, devel:true, indent:2, expr:true */
 /* exported responsiveNav */
 
 
@@ -221,22 +221,29 @@ var responsiveNav = (function (window, document) {
     ResponsiveNav = function (el, options) {
       var i;
 
-      // Adds "js" class for <html>
-      docEl.className = docEl.className + " js ";
-
       // Default options
       this.options = {
-        transition: 400,    // Integer: Speed of the transition, in milliseconds
-        label: "Menu",      // String: Label for the navigation toggle
-        insert: "after",    // String: Insert the toggle before or after the navigation
-        customToggle: "",   // Selector: Specify the ID of a custom toggle
-        debug: false        // Boolean: Log debug messages to console, true or false
+        animate: true,        // Boolean: Use CSS3 transitions, true or false
+        transition: 400,      // Integer: Speed of the transition, in milliseconds
+        label: "Menu",        // String: Label for the navigation toggle
+        insert: "after",      // String: Insert the toggle before or after the navigation
+        customToggle: "",     // Selector: Specify the ID of a custom toggle
+        tabIndex: 1,          // Integer: Specify the default toggle's tabindex
+        openPos: "relative",  // String: Position of the opened nav, relative or static
+        jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
+        debug: false,         // Boolean: Log debug messages to console, true or false
+        init: function(){},   // Function: Responsive Nav inited callback
+        open: function(){},   // Function: Navigation opening callback
+        close: function(){}   // Function: Navigation closing callback
       };
 
       // User defined options
       for (i in options) {
         this.options[i] = options[i];
       }
+
+      // Adds "js" class for <html>
+      docEl.className = docEl.className + " " + this.options.jsClass + " ";
 
       // Debug logger
       if (this.options.debug) {
@@ -271,6 +278,7 @@ var responsiveNav = (function (window, document) {
     // Public methods
     destroy: function () {
       this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
+      this.wrapper.className = this.wrapper.className.replace(/(^|\s)opened(\s|$)/, " ");
       this.wrapper.removeAttribute("style");
       this.wrapper.removeAttribute(aria);
       this.wrapper = null;
@@ -283,7 +291,12 @@ var responsiveNav = (function (window, document) {
       removeEvent(navToggle, "keyup", this, false);
       removeEvent(navToggle, "click", this, false);
 
-      navToggle.parentNode.removeChild(navToggle);
+      if (!this.options.customToggle) {
+        navToggle.parentNode.removeChild(navToggle);
+      } else {
+        navToggle.removeAttribute(aria);
+      }
+
       if (styleElement.parentNode) {
         styleElement.parentNode.removeChild(styleElement);
       }
@@ -296,21 +309,27 @@ var responsiveNav = (function (window, document) {
 
       if (!navOpen) {
         navWrapper.className = navWrapper.className.replace(/(^|\s)closed(\s|$)/, " opened ");
-        navWrapper.style.position = "relative";
+        navWrapper.style.position = this.options.openPos;
         navWrapper.setAttribute(aria, false);
 
         navOpen = true;
+        this.options.open();
         log("Opened nav");
 
       } else {
         navWrapper.className = navWrapper.className.replace(/(^|\s)opened(\s|$)/, " closed ");
         navWrapper.setAttribute(aria, true);
 
-        setTimeout(function () {
+        if (this.options.animate) {
+          setTimeout(function () {
+            navWrapper.style.position = "absolute";
+          }, this.options.transition + 10);
+        } else {
           navWrapper.style.position = "absolute";
-        }, this.options.transition + 10);
+        }
 
         navOpen = false;
+        this.options.close();
         log("Closed nav");
       }
       return false;
@@ -341,7 +360,7 @@ var responsiveNav = (function (window, document) {
 
     // Private methods
     __init: function () {
-      log("Inited ResponsiveNav2.js");
+      log("Inited Responsive Nav");
 
       this.wrapper.className = this.wrapper.className + " closed";
       this.__createToggle();
@@ -373,7 +392,7 @@ var responsiveNav = (function (window, document) {
         var toggle = document.createElement("a");
         toggle.setAttribute("href", "#");
         toggle.setAttribute("id", "nav-toggle");
-        toggle.setAttribute("tabindex", "1");
+        toggle.setAttribute("tabindex", this.options.tabIndex);
         toggle.innerHTML = this.options.label;
 
         if (this.options.insert === "after") {
@@ -387,8 +406,14 @@ var responsiveNav = (function (window, document) {
 
       } else {
         var toggleEl = this.options.customToggle.replace("#", "");
-        navToggle = document.getElementById(toggleEl);
-        log("Custom nav toggle created");
+
+        if (document.getElementById(toggleEl)) {
+          navToggle = document.getElementById(toggleEl);
+          log("Custom nav toggle created");
+        } else {
+          log("The custom nav toggle you are trying to select doesn't exist");
+          return;
+        }
       }
     },
 
@@ -416,16 +441,20 @@ var responsiveNav = (function (window, document) {
     },
 
     __transitions: function () {
-      var objStyle = this.wrapper.style,
-        transition = "max-height " + this.options.transition + "ms";
+      if (this.options.animate) {
+        var objStyle = this.wrapper.style,
+          transition = "max-height " + this.options.transition + "ms";
 
-      objStyle.WebkitTransition = transition;
-      objStyle.MozTransition = transition;
-      objStyle.OTransition = transition;
-      objStyle.transition = transition;
+        objStyle.WebkitTransition = transition;
+        objStyle.MozTransition = transition;
+        objStyle.OTransition = transition;
+        objStyle.transition = transition;
+      }
     },
 
     __resize: function () {
+      this.options.init();
+
       if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
         navToggle.setAttribute(aria, false);
 
@@ -451,7 +480,7 @@ var responsiveNav = (function (window, document) {
       } else {
         navToggle.setAttribute(aria, true);
         this.wrapper.setAttribute(aria, false);
-        this.wrapper.style.position = "relative";
+        this.wrapper.style.position = this.options.openPos;
         this.__removeStyles();
       }
     }
@@ -463,7 +492,6 @@ var responsiveNav = (function (window, document) {
     if (!__instance) {
       __instance = new ResponsiveNav(el, options);
     }
-
     return __instance;
   }
 
