@@ -65,8 +65,11 @@ description: ...
   customToggle: "", // Selector: Specify the ID of a custom toggle
   tabIndex: 1, // Integer: Specify the default toggle's tabindex
   openPos: "relative", // String: Position of the opened nav, relative or static
-  jsClass: "js", // String: 'JS enabled' class which is added to <html> el
-  debug: false // Boolean: Log debug messages to console, true or false
+  jsClass: "js", // String: 'JS enabled' class which is added to &lt;html> el
+  debug: false, // Boolean: Log debug messages to console, true or false
+  init: function(){}, // Function: Inited callback
+  open: function(){}, // Function: Opening callback
+  close: function(){} // Function: Closing callback
 });
 </code></pre>
 
