@@ -8,8 +8,9 @@
     <meta name="apple-mobile-web-app-title" content="Responsive Nav">
     <script src="//use.typekit.net/sxv1brn.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
-    <link href="/stylesheets/styles.css?v=3452" rel="stylesheet" type="text/css">
-    <script src="/javascripts/all.js?v=3452"></script>
+    <link href="stylesheets/styles.css?v=345" rel="stylesheet" type="text/css">
+    <script src="javascripts/all.js?v=345" type="text/javascript"></script>
+    <!--[if lte IE 9]><script src="/javascripts/respond.js" type="text/javascript"></script><![endif]-->
   </head>
   <body class="index" onload="prettyPrint()">
     <div class="border" id="home"></div>
@@ -31,13 +32,15 @@
   </div>
 </div>
 
-<img src="images/illustration.jpg" class="image" alt="Responsive Nav displayd in various sizes">
+<a href="http://viljamis.com/demo/responsive-nav/demo/" title="View live demo" rel="external">
+  <img src="images/illustration.jpg?v=345" class="image" alt="Responsive Nav displayd in various sizes">
+</a>
 
 <div id="features" class="section">
   <h2>Features</h2>
-  <p>Responsive Nav is a tiny JavaScript plugin (weighs 1.5kb minified and gzipped) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from height: 0 to height: auto which isn’t normally possible with CSS3&nbsp;transitions.</p>
+  <p>Responsive Nav is a tiny JavaScript plugin (weighs 1.8kb minified and gzipped) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from height: 0 to height: auto which isn’t normally possible with CSS3&nbsp;transitions. <a href="http://viljamis.com/demo/responsive-nav/demo/" rel="external">View live demo</a> or resize this window to see the plugin in action.</p>
   <ul class="list-1">
-    <li>Weighs only 1.5kb minified and gzipped.</li>
+    <li>Weighs only 1.8kb minified and gzipped.</li>
     <li>Doesn’t require any external libraries.</li>
     <li>Uses CSS3 transitions, touch events and simple markup.</li>
     <li>Removes the 300ms delay between a physical tap and the click&nbsp;event.</li>
@@ -54,8 +57,8 @@
   
 <h3>Link files</h3>
 <pre class="prettyprint lang-html"><code>&lt;!-- Put these into the &lt;head> -->
-&lt;script src="responsive-nav.js">&lt;/script>
 &lt;link rel="stylesheet" href="responsive-nav.css">
+&lt;script src="responsive-nav.js">&lt;/script>
 </code></pre>
 
 <h3>Add markup</h3>

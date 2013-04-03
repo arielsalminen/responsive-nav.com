@@ -110,7 +110,7 @@ h1::selection:window-inactive {
 @viewport {width:device-width}
 
 img, video {
-  width: auto;
+  width: 100%;
   max-width: 100%;
   height: auto;
 }
@@ -122,6 +122,9 @@ img, video {
 /* ------------------------------------------
   BASE
 --------------------------------------------- */
+html {
+  _overflow-x: hidden;
+}
 body {
   min-width: 200px;
   -webkit-text-size-adjust: 100%;
@@ -169,6 +172,9 @@ body {
 .wrapper {
   max-width: em(760);
   margin: 0 auto;
+  @include breakpoint(wall) {
+    _width: em(760);
+  }
 }
 
 .border {
@@ -243,6 +249,7 @@ h1 {
   }
   @include breakpoint(desk) {
     margin-bottom: .2em;
+    *letter-spacing: -0.2em;
     font-size: 620%;
   }
   @include breakpoint(wall) {
@@ -292,14 +299,13 @@ p {
 
 #nav,
 #nav * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  @include box-sizing(border-box);
 }
 
 #nav,
 #nav ul {
   margin: 0;
+  padding: 0;
   list-style: none;
   width: 100%;
   float: left;
@@ -311,9 +317,12 @@ p {
 #nav li {
   float: left;
   width: 100%;
+  display: block;
   @include breakpoint(desk) {
     float: none;
     display: inline-block;
+    *display: block;
+    *float: left;
     width: auto;
     margin-right: .7em;
   }
@@ -336,6 +345,7 @@ p {
     outline: none;
   }
   @include breakpoint(desk) {
+    _float: none;
     -webkit-font-smoothing: antialiased;
     margin: 0;
     padding: 1.96em .7em .5em;
@@ -372,13 +382,12 @@ p {
   display: block;
   overflow: hidden;
   @include breakpoint(desk) {
-    position: static;
+    position: relative !important; /* important is IE8 fix */
     max-height: none;
   }
 }
 
 #nav.opened {
-  position: relative;
   max-height: 9999px;
 }
 
@@ -426,6 +435,7 @@ p {
   @include breakpoint(desk) {
     margin: 4.96em auto 4.1em;
     .intro-container {
+      _width: em(504);
       max-width: em(504);
       margin: 2.4em auto;
     }
@@ -433,6 +443,7 @@ p {
       margin-left: auto;
       margin-right: auto;
       max-width: em(340);
+      _width: em(340);
       text-align: left;
       float: left;
     }
@@ -504,6 +515,7 @@ pre {
   white-space: pre;
   white-space: no-wrap;
   overflow-x: scroll;
+  _white-space: normal !important;
   @include box-shadow(
     0 1px 4px lighten($color-grey, 22%),
     inset 0 0 0 1px lighten($color-grey, 18%)
@@ -576,7 +588,8 @@ pre::-webkit-scrollbar-thumb {
   text-align: center;
   font-size: 16px;
   width: 90%;
-  margin: 2.8em 5% 2em;
+  margin: 2.8em 5% 0;
+  padding-bottom: 2em;
   a {
     color: $color-grey;
     &:hover {
