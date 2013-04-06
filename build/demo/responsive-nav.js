@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.07
+/*! responsive-nav.js v1.08
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -186,6 +186,7 @@ var responsiveNav = (function (window, document) {
 
     // Public methods
     destroy: function () {
+      this._removeStyles();
       removeClass(nav, "closed");
       removeClass(nav, "opened");
       nav.removeAttribute("style");
@@ -204,10 +205,6 @@ var responsiveNav = (function (window, document) {
         navToggle.parentNode.removeChild(navToggle);
       } else {
         navToggle.removeAttribute("aria-hidden");
-      }
-
-      if (styleElement.parentNode) {
-        styleElement.parentNode.removeChild(styleElement);
       }
 
       log("Destroyed!");
@@ -260,6 +257,9 @@ var responsiveNav = (function (window, document) {
         this._onclick(evt);
         break;
       case "load":
+        this._transitions(evt);
+        this._resize(evt);
+        break;
       case "resize":
         this._resize(evt);
         break;
@@ -370,36 +370,39 @@ var responsiveNav = (function (window, document) {
       }
     },
 
-    _resize: function () {
-      opts.init();
+    _calcHeight: function () {
+      var savedHeight = nav.inner.offsetHeight,
+        innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px}";
 
+      // Hide from old IE
+      if (computed) {
+        styleElement.innerHTML = innerStyles;
+        innerStyles = "";
+      }
+      log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
+    },
+
+    _resize: function () {
       if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
         setAttributes(navToggle, {"aria-hidden": "false"});
 
+        // If the navigation is hidden
         if (nav.className.match(/(^|\s)closed(\s|$)/)) {
           setAttributes(nav, {"aria-hidden": "true"});
           nav.style.position = "absolute";
         }
 
         this._createStyles();
-        this._transitions();
-
-        var savedHeight = nav.inner.offsetHeight,
-          innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px}";
-
-        // Hide from old IE
-        if (computed) {
-          styleElement.innerHTML = innerStyles;
-          innerStyles = "";
-        }
-
-        log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
+        this._calcHeight();
       } else {
         setAttributes(navToggle, {"aria-hidden": "true"});
         setAttributes(nav, {"aria-hidden": "false"});
         nav.style.position = opts.openPos;
         this._removeStyles();
       }
+
+      // Init callback
+      opts.init();
     }
 
   };
