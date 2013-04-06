@@ -1,4 +1,5 @@
 //= require "init"
 //= require "orientation"
-//= require "responsive-nav"
+//= require "responsive-nav.min"
 //= require "prettify"
+

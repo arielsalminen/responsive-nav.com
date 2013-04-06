@@ -1,26 +1,20 @@
 <!DOCTYPE html>
-<html class="no-js preload no-fontface no-touch" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title><%= data.page.title || "Responsive Nav" %></title>
+    <title>Responsive Nav</title>
     <meta name="author" content="@viljamis">
-    <% if data.page.description %>
-      <meta name="description" content="<%= data.page.description %>">
-    <% end %>
+    <meta name="description" content="Responsive navigation plugin without library dependencies and with fast touch screen support">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-title" content="Responsive Nav">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icon.png">
     <script src="//use.typekit.net/sxv1brn.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
-    <% if data.page.demo == true %>
-      <%= stylesheet_link_tag "demo" %>
-    <% else %>
-      <%= stylesheet_link_tag "styles" %>
-    <% end %>
-    <%= javascript_include_tag  "all" %>
-    <!--[if lte IE 9]><%= javascript_include_tag  "respond" %><![endif]-->
+    <%= stylesheet_link_tag "styles" %>
+    <%= javascript_include_tag "all" %>
+    <!--[if lte IE 9]><%= javascript_include_tag "respond" %><![endif]-->
   </head>
-  <body class="<%= page_classes %>" onload="prettyPrint()">
+  <body onload="prettyPrint()">
     <div class="border" id="home"></div>
     <div class="wrapper">
       <div id="nav">
