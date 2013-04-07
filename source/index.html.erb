@@ -7,7 +7,12 @@
 </div>
 
 <a href="http://viljamis.com/demo/responsive-nav/demo/">
-  <img src="images/illustration.jpg" class="image" alt="Responsive Nav displayd in various sizes">
+  <div data-picture data-alt="Kisko Labs">
+    <div data-src="images/illustration.jpg"></div>
+    <div data-src="images/illustration_small.jpg" data-media="(max-width: 46.24em)"></div>
+    <!-- Fallback content for non-JS browsers -->
+    <noscript><img src="images/illustration.jpg" class="image" alt="Responsive Nav displayd in various sizes"></noscript>
+  </div>
 </a>
 
 <div id="features" class="section">

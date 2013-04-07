@@ -10,6 +10,11 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
 }
 ;
+// matchMedia polyfill, Author: Scott Jehl, Paul Irish, Nicholas Zakas
+// + Picturefill. Author: Scott Jehl, Filament Group, 2012
+window.matchMedia=window.matchMedia||function(a){var d,c=a.documentElement,g=c.firstElementChild||c.firstChild,b=a.createElement("body"),e=a.createElement("div");e.id="mq-test-1";e.style.cssText="position:absolute;top:-100em";b.style.background="none";b.appendChild(e);return function(a){e.innerHTML='&shy;<style media="'+a+'"> #mq-test-1 { width: 42px; }</style>';c.insertBefore(b,g);d=42===e.offsetWidth;c.removeChild(b);return{matches:d,media:a}}}(document);
+(function(a){a.picturefill=function(){for(var d=a.document.getElementsByTagName("div"),c=0,g=d.length;c<g;c++)if(null!==d[c].getAttribute("data-picture")){for(var b=d[c].getElementsByTagName("div"),e=[],f=0,j=b.length;f<j;f++){var h=b[f].getAttribute("data-media");(!h||a.matchMedia&&a.matchMedia(h).matches)&&e.push(b[f])}b=d[c].getElementsByTagName("img")[0];e.length?(b||(b=a.document.createElement("img"),b.alt=d[c].getAttribute("data-alt"),d[c].appendChild(b)),b.src=e.pop().getAttribute("data-src")):
+b&&d[c].removeChild(b)}};a.addEventListener?(a.addEventListener("resize",a.picturefill,!1),a.addEventListener("DOMContentLoaded",function(){a.picturefill();a.removeEventListener("load",a.picturefill,!1)},!1),a.addEventListener("load",a.picturefill,!1)):a.attachEvent&&a.attachEvent("onload",a.picturefill)})(this);
 var q=null;window.PR_SHOULD_USE_CONTINUATION=!0;
 (function(){function L(a){function m(a){var f=a.charCodeAt(0);if(f!==92)return f;var b=a.charAt(1);return(f=r[b])?f:"0"<=b&&b<="7"?parseInt(a.substring(1),8):b==="u"||b==="x"?parseInt(a.substring(2),16):a.charCodeAt(1)}function e(a){if(a<32)return(a<16?"\\x0":"\\x")+a.toString(16);a=String.fromCharCode(a);if(a==="\\"||a==="-"||a==="["||a==="]")a="\\"+a;return a}function h(a){for(var f=a.substring(1,a.length-1).match(/\\u[\dA-Fa-f]{4}|\\x[\dA-Fa-f]{2}|\\[0-3][0-7]{0,2}|\\[0-7]{1,2}|\\[\S\s]|[^\\]/g),a=
 [],b=[],o=f[0]==="^",c=o?1:0,i=f.length;c<i;++c){var j=f[c];if(/\\[bdsw]/i.test(j))a.push(j);else{var j=m(j),d;c+2<i&&"-"===f[c+1]?(d=m(f[c+2]),c+=2):d=j;b.push([j,d]);d<65||j>122||(d<65||j>90||b.push([Math.max(65,j)|32,Math.min(d,90)|32]),d<97||j>122||b.push([Math.max(97,j)&-33,Math.min(d,122)&-33]))}}b.sort(function(a,f){return a[0]-f[0]||f[1]-a[1]});f=[];j=[NaN,NaN];for(c=0;c<b.length;++c)i=b[c],i[0]<=j[1]+1?j[1]=Math.max(j[1],i[1]):f.push(j=i);b=["["];o&&b.push("^");b.push.apply(b,a);for(c=0;c<
@@ -55,6 +60,7 @@ this,!1);l(e,"touchstart",this,!1);l(e,"keyup",this,!1);l(e,"click",this,!1)},_c
 "after"===f.insert?d.parentNode.insertBefore(a,d.nextSibling):d.parentNode.insertBefore(a,d),e=h.getElementById("nav-toggle")},_preventDefault:function(a){a.preventDefault?a.preventDefault():a.returnValue=!1},_onmousedown:function(a){this._preventDefault(a);this.toggle(a)},_ontouchstart:function(a){e.onmousedown=null;this._preventDefault(a);this.toggle(a)},_onkeyup:function(a){13===(a||g.event).keyCode&&this.toggle(a)},_onclick:function(a){this._preventDefault(a)},_transitions:function(){if(f.animate){var a=
 d.style,b="max-height "+f.transition+"ms";a.WebkitTransition=b;a.MozTransition=b;a.OTransition=b;a.transition=b}},_calcHeight:function(){var a="#"+this.wrapperEl+".opened{max-height:"+d.inner.offsetHeight+"px}";t&&(k.innerHTML=a)},_resize:function(){"none"!==g.getComputedStyle(e,null).getPropertyValue("display")?(j(e,{"aria-hidden":"false"}),d.className.match(/(^|\s)closed(\s|$)/)&&(j(d,{"aria-hidden":"true"}),d.style.position="absolute"),this._createStyles(),this._calcHeight()):(j(e,{"aria-hidden":"true"}),
 j(d,{"aria-hidden":"false"}),d.style.position=f.openPos,this._removeStyles());f.init()}};var q;return function(a,b){q||(q=new s(a,b));return q}}(window,document);
+
 
 
 
