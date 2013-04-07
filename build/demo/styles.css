@@ -172,8 +172,8 @@ a:hover {
     -webkit-overflow-scrolling: auto;
     padding: 0 2em 2em;
     border-radius: 0;
-    position: relative;
     box-shadow: none;
+    position: relative;
     width: 100%;
     overflow: hidden;
   }
