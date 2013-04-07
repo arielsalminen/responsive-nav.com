@@ -173,6 +173,7 @@ a:hover {
     padding: 0 2em 2em;
     border-radius: 0;
     position: relative;
+    box-shadow: none;
     width: 100%;
     overflow: hidden;
   }
