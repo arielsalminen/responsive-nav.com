@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.09
+/*! responsive-nav.js v1.1
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -333,8 +333,12 @@ var responsiveNav = (function (window, document) {
     },
 
     _onmousedown: function (e) {
-      this._preventDefault(e);
-      this.toggle(e);
+      var evt = e || window.event;
+      // If the user isn't right clicking:
+      if (!(evt.which === 3 || evt.button === 2)) {
+        this._preventDefault(e);
+        this.toggle(e);
+      }
     },
 
     _ontouchstart: function (e) {
@@ -377,6 +381,7 @@ var responsiveNav = (function (window, document) {
         styleElement.innerHTML = innerStyles;
         innerStyles = "";
       }
+
       log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
     },
 
