@@ -427,7 +427,7 @@ p {
 
 .image {
   width: 100%;
-  display: block;
+  float: left;
   margin-bottom: 3em;
   @include breakpoint(wall) {
     margin-left: -0.5em;
@@ -470,6 +470,7 @@ p {
   max-width: em(504);
   margin: 0 auto;
   text-align: left;
+  clear: both;
   margin-top: 3em;
   @include clearfix;
   ul {
@@ -517,6 +518,9 @@ pre {
   padding: 2em 2em 1.3em;
   margin-bottom: 3em;
   font-size: 75%;
+  float: left;
+  width: 100%;
+  @include box-sizing(border-box);
   color: lighten($color-black, 4%);
   background: lighten($color-grey, 26%);
   white-space: pre;
