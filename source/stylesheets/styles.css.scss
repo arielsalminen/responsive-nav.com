@@ -427,7 +427,7 @@ p {
 
 .image {
   width: 100%;
-  float: left;
+  display: block;
   margin-bottom: 3em;
   @include breakpoint(wall) {
     margin-left: -0.5em;
@@ -497,6 +497,7 @@ p {
 }
 
 #features {
+  @include clearfix;
   margin-top: 0;
   @include breakpoint(wall) {
     padding-bottom: 1.74em;
