@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
     <title>Responsive Nav &mdash; Responsive Navigation Plugin</title>
@@ -7,6 +7,10 @@
     <meta name="description" content="Responsive navigation plugin without library dependencies and with fast touch screen support">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icon.png">
+    <script>
+      var doc = document, docEl = doc.documentElement;
+      docEl.className = docEl.className.replace(/(^|\s)no-js(\s|$)/, " js ");
+    </script>
     <%= stylesheet_link_tag "styles" %>
     <%= javascript_include_tag "all" %>
     <script src="//use.typekit.net/sxv1brn.js"></script>
@@ -35,7 +39,7 @@
       var navigation = responsiveNav("#nav");
     </script>
 
-    <script type="text/javascript">
+    <script>
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-39967427-1']);
       _gaq.push(['_trackPageview']);
