@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Responsive Nav &mdash; Responsive Navigation Plugin</title>
-    <meta name="author" content="@viljamis">
+    <meta name="author" content="@arielsalminen">
     <meta name="description" content="Responsive navigation plugin without library dependencies and with fast touch screen support">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icon.png">
@@ -25,29 +25,18 @@
           <li class="active"><a href="http://responsive-nav.com">Home</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#instructions">Usage Instructions</a></li>
-          <li><a href="https://github.com/viljamis/responsive-nav.js" rel="external">View on GitHub</a></li>
+          <li><a href="https://github.com/arielsalminen/responsive-nav.js" rel="external">View on GitHub</a></li>
         </ul>
       </div>
       <div class="content">
         <%= yield %>
       </div>
-      <div class="footer">Brought to you by <a href="http://viljamis.com" rel="external">@viljamis</a>. Follow&nbsp;me on <a href="http://twitter.com/viljamis" rel="external">Twitter</a>&nbsp;for&nbsp;updates.</div>
+      <div class="footer">Brought to you by <a href="https://arie.ls" rel="external">Ariel Salminen</a>. Follow&nbsp;me on <a href="https://social.design.systems/@ariel" rel="external">Mastodon</a>&nbsp;for&nbsp;updates.</div>
     </div>
 
     <script>
       // Init responsive-nav.js
       var navigation = responsiveNav("#nav");
-    </script>
-
-    <script>
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-39967427-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
     </script>
   </body>
 </html>
